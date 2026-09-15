@@ -37,9 +37,14 @@ MODELS = [
     "intermediate/int_order_item_economics.sql",
     "intermediate/int_month_spine.sql",
     "intermediate/int_customer_first_order.sql",
+    "marts/dim_customer.sql",
+    "marts/dim_product.sql",
 ]
 
-PUBLISHED_MARTS: list[str] = []
+PUBLISHED_MARTS = [
+    "dim_customer",
+    "dim_product",
+]
 
 
 def connect() -> duckdb.DuckDBPyConnection:
