@@ -31,6 +31,7 @@ select
     r.refund_amount,
 
     round(cast(r.refund_amount as double)
-          - case when r.is_restocked then cast(e.cogs_recovered as double) else 0 end, 2) as margin_lost
+          - case when r.is_restocked then cast(e.cogs_recovered as double) else 0 end, 2)
+        ::decimal(14, 2) as margin_lost
 from stg_returns r
 join int_order_item_economics e on e.order_item_id = r.order_item_id;
