@@ -39,11 +39,15 @@ MODELS = [
     "intermediate/int_customer_first_order.sql",
     "marts/dim_customer.sql",
     "marts/dim_product.sql",
+    "marts/fct_order_items.sql",
+    "marts/fct_returns.sql",
 ]
 
 PUBLISHED_MARTS = [
     "dim_customer",
     "dim_product",
+    "fct_order_items",
+    "fct_returns",
 ]
 
 
