@@ -43,6 +43,8 @@ MODELS = [
     "marts/fct_returns.sql",
     "marts/fct_fulfilment_daily.sql",
     "marts/fct_discount_bands.sql",
+    "marts/fct_cohort_repeat.sql",
+    "marts/fct_channel_payback.sql",
 ]
 
 PUBLISHED_MARTS = [
@@ -52,6 +54,8 @@ PUBLISHED_MARTS = [
     "fct_returns",
     "fct_fulfilment_daily",
     "fct_discount_bands",
+    "fct_cohort_repeat",
+    "fct_channel_payback",
 ]
 
 
