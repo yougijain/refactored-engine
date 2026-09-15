@@ -41,6 +41,8 @@ MODELS = [
     "marts/dim_product.sql",
     "marts/fct_order_items.sql",
     "marts/fct_returns.sql",
+    "marts/fct_fulfilment_daily.sql",
+    "marts/fct_discount_bands.sql",
 ]
 
 PUBLISHED_MARTS = [
@@ -48,6 +50,8 @@ PUBLISHED_MARTS = [
     "dim_product",
     "fct_order_items",
     "fct_returns",
+    "fct_fulfilment_daily",
+    "fct_discount_bands",
 ]
 
 
