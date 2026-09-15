@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Rebuild the warehouse from the committed extracts
+        run: python src/build_marts.py
+
+      - name: Run contract, reproducibility and workbook tests
+        run: pytest -q
+
+      - name: Fail if the build changed anything that is committed
+        run: git diff --exit-code -- data tableau
