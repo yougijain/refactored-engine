@@ -73,23 +73,23 @@ select
     r.return_date,
 
     -- Cost of goods, net of units that came back in resaleable condition.
-    round(cast(p.unit_cost as double) * a.quantity, 2)        as cogs_gross,
+    round(cast(p.unit_cost as double) * a.quantity, 2)::decimal(14, 2)        as cogs_gross,
     round(cast(p.unit_cost as double)
           * case when coalesce(r.is_restocked, false) then coalesce(r.quantity_returned, 0) else 0 end,
-          2)                                                  as cogs_recovered,
+          2)::decimal(14, 2)                                                  as cogs_recovered,
     round(cast(p.unit_cost as double)
           * (a.quantity - case when coalesce(r.is_restocked, false)
                                then coalesce(r.quantity_returned, 0) else 0 end),
-          2)                                                  as cogs_net,
+          2)::decimal(14, 2)                                                  as cogs_net,
 
     -- Freight, allocated from the order header.
-    round(cast(o.shipping_cost as double) * a.revenue_share, 2)         as shipping_cost_allocated,
-    round(cast(o.shipping_fee_charged as double) * a.revenue_share, 2)  as shipping_fee_allocated,
+    round(cast(o.shipping_cost as double) * a.revenue_share, 2)::decimal(14, 2)         as shipping_cost_allocated,
+    round(cast(o.shipping_fee_charged as double) * a.revenue_share, 2)::decimal(14, 2)  as shipping_fee_allocated,
     round((cast(o.shipping_cost as double) - cast(o.shipping_fee_charged as double))
-          * a.revenue_share, 2)                                         as net_shipping_cost,
+          * a.revenue_share, 2)::decimal(14, 2)                                         as net_shipping_cost,
 
     -- Revenue the business actually kept.
-    round(cast(a.net_revenue as double) - coalesce(cast(r.refund_amount as double), 0), 2) as realised_revenue,
+    round(cast(a.net_revenue as double) - coalesce(cast(r.refund_amount as double), 0), 2)::decimal(14, 2) as realised_revenue,
 
     -- Contribution margin = realised revenue - net COGS - net freight.
     round(
@@ -98,7 +98,7 @@ select
           * (a.quantity - case when coalesce(r.is_restocked, false)
                                then coalesce(r.quantity_returned, 0) else 0 end)
         - (cast(o.shipping_cost as double) - cast(o.shipping_fee_charged as double)) * a.revenue_share,
-        2)                                                    as contribution_margin
+        2)::decimal(14, 2)                                                    as contribution_margin
 from allocated a
 join stg_orders o      on o.order_id = a.order_id
 join stg_products p    on p.product_id = a.product_id

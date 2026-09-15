@@ -12,5 +12,5 @@ select
     cast(list_price as decimal(12, 2))  as list_price,
     cast(weight_kg as decimal(8, 2))    as weight_kg,
     round((cast(list_price as double) - cast(unit_cost as double))
-          / nullif(cast(list_price as double), 0), 4) as list_margin_rate
+          / nullif(cast(list_price as double), 0), 4)::decimal(9, 4) as list_margin_rate
 from raw_products;

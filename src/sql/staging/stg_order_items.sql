@@ -12,5 +12,6 @@ select
     cast(unit_price as decimal(12, 2)) * cast(quantity as integer)
         - cast(discount_amount as decimal(12, 2))   as net_revenue,
     round(cast(discount_amount as double)
-          / nullif(cast(unit_price as double) * cast(quantity as integer), 0), 4) as discount_rate
+          / nullif(cast(unit_price as double) * cast(quantity as integer), 0), 4)
+        ::decimal(9, 4) as discount_rate
 from raw_order_items;

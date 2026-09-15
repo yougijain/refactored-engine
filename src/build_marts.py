@@ -87,7 +87,10 @@ def export_marts(con: duckdb.DuckDBPyConnection) -> None:
     MARTS_DIR.mkdir(parents=True, exist_ok=True)
     for table in PUBLISHED_MARTS:
         target = (MARTS_DIR / f"{table}.csv").as_posix()
-        con.execute(f"copy (select * from {table}) to '{target}' (header, delimiter ',')")
+        # `order by all` makes the export deterministic. DuckDB's parallel aggregation does
+        # not guarantee row order between runs, so without this a rebuild produces a diff of
+        # thousands of reordered-but-identical lines and CI cannot byte-compare the output.
+        con.execute(f"copy (select * from {table} order by all) to '{target}' (header, delimiter ',')")
         rows = con.execute(f"select count(*) from {table}").fetchone()[0]
         print(f"  {table + '.csv':<32} {rows:>7,} rows")
 
