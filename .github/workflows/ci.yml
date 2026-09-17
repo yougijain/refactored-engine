@@ -22,6 +22,9 @@ jobs:
       - name: Rebuild the warehouse from the committed extracts
         run: python src/build_marts.py
 
+      - name: Regenerate the Tableau workbook from the mart schemas
+        run: python tools/generate_workbook.py
+
       - name: Run contract, reproducibility and workbook tests
         run: pytest -q
 
