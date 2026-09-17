@@ -358,9 +358,11 @@ def worksheet(name, ds_caption, ds, deps, mark, rows, cols, encodings,
     return "\n".join(p for p in parts if p)
 
 
-def dashboard(name, title, subtitle, zones, width=1500, height=950):
+def dashboard(name, title, subtitle, zones, controls=(), width=1500, height=950):
+    """`controls` is a sequence of (parameter, x, y, w, h) parameter-control zones."""
+    title_width = 100000 - max((w for _p, _x, _y, w, _h in controls), default=0)
     zone_xml = ["\n".join([
-        "        <zone h='7000' id='2' type-v2='text' w='100000' x='0' y='0'>",
+        f"        <zone h='7000' id='2' type-v2='text' w='{title_width}' x='0' y='0'>",
         "          <formatted-text>",
         f"            <run bold='true' fontsize='16'>{escape(title)}</run>",
         "            <run>&#13;&#10;</run>",
@@ -371,6 +373,10 @@ def dashboard(name, title, subtitle, zones, width=1500, height=950):
     zone_id = 3
     for sheet_name, x, y, w, h in zones:
         zone_xml.append(f"        <zone h='{h}' id='{zone_id}' name={a(sheet_name)} w='{w}' x='{x}' y='{y}' />")
+        zone_id += 1
+    for parameter, x, y, w, h in controls:
+        zone_xml.append(f"        <zone h='{h}' id='{zone_id}' param={a(parameter)} type-v2='paramctrl' "
+                        f"w='{w}' x='{x}' y='{y}' />")
         zone_id += 1
     return "\n".join([
         f"    <dashboard name={a(name)}>",
@@ -625,7 +631,8 @@ DASHBOARDS = [
      "Use the Margin Basis parameter to switch the first chart between the two.",
      [("Category Contribution", 0, 7000, 50000, 46000),
       ("Promised vs Realised Margin", 50000, 7000, 50000, 46000),
-      ("Margin Trend by Category", 0, 53000, 100000, 47000)]),
+      ("Margin Trend by Category", 0, 53000, 100000, 47000)],
+     [("[Parameters].[Parameter 1]", 78000, 0, 22000, 7000)]),
     ("2 · Pricing & Discounting",
      "What Discount Depth Buys",
      "Margin per unit and units per line at each discount band, held within category so a "
@@ -649,7 +656,7 @@ DASHBOARDS = [
 
 
 # Parameters whose control card is shown on a worksheet.
-SHEET_PARAMETERS: dict[str, list[str]] = {}
+SHEET_PARAMETERS = {"Category Contribution": ["[Parameters].[Parameter 1]"]}
 
 
 def worksheet_cards(parameters=()) -> str:

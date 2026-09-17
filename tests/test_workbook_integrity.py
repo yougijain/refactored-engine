@@ -173,15 +173,57 @@ def test_every_worksheet_is_used_on_a_dashboard(workbook):
         assert sheet.get("name") in placed, f"{sheet.get('name')} is not on any dashboard"
 
 
+def content_zones(dashboard: ET.Element) -> list[ET.Element]:
+    """The title, sheet and control zones laid out inside a dashboard's root container."""
+    root = dashboard.find("zones/zone")
+    return list(root.findall("zone")) if root is not None else []
+
+
+def zone_label(zone: ET.Element) -> str:
+    return zone.get("name") or zone.get("param") or zone.get("type-v2") or zone.get("id")
+
+
 def test_dashboard_zones_stay_inside_the_canvas(workbook):
     for dash in workbook.find("dashboards"):
-        for zone in dash.findall(".//zone"):
-            if not zone.get("name"):
-                continue
+        for zone in content_zones(dash):
             right = int(zone.get("x")) + int(zone.get("w"))
             bottom = int(zone.get("y")) + int(zone.get("h"))
-            assert right <= 100000, f"{dash.get('name')}/{zone.get('name')} overflows horizontally"
-            assert bottom <= 100000, f"{dash.get('name')}/{zone.get('name')} overflows vertically"
+            assert right <= 100000, f"{dash.get('name')}/{zone_label(zone)} overflows horizontally"
+            assert bottom <= 100000, f"{dash.get('name')}/{zone_label(zone)} overflows vertically"
+
+
+def test_dashboard_zones_do_not_overlap(workbook):
+    for dash in workbook.find("dashboards"):
+        boxes = [(zone_label(z), int(z.get("x")), int(z.get("y")),
+                  int(z.get("x")) + int(z.get("w")), int(z.get("y")) + int(z.get("h")))
+                 for z in content_zones(dash)]
+        for i, (a_name, ax1, ay1, ax2, ay2) in enumerate(boxes):
+            for b_name, bx1, by1, bx2, by2 in boxes[i + 1:]:
+                overlaps = ax1 < bx2 and bx1 < ax2 and ay1 < by2 and by1 < ay2
+                assert not overlaps, f"{dash.get('name')}: '{a_name}' overlaps '{b_name}'"
+
+
+# ---------------------------------------------------------------------------- parameters ---
+
+def declared_parameters(datasources) -> set[str]:
+    params = datasources.get("Parameters")
+    return set() if params is None else {f"[Parameters].{c.get('name')}" for c in params.findall("column")}
+
+
+def test_parameter_controls_reference_declared_parameters(workbook, datasources):
+    declared = declared_parameters(datasources)
+    controls = [z for d in workbook.find("dashboards") for z in d.findall(".//zone") if z.get("param")]
+    controls += [c for w in workbook.find("windows") for c in w.findall(".//card[@type='parameter']")]
+    for control in controls:
+        assert control.get("param") in declared, f"control for undeclared parameter {control.get('param')}"
+
+
+def test_every_parameter_has_a_control_on_a_dashboard(workbook, datasources):
+    """A parameter a viewer cannot reach from a dashboard does nothing for them."""
+    shown = {z.get("param") for d in workbook.find("dashboards")
+             for z in d.findall(".//zone[@type-v2='paramctrl']")}
+    for parameter in declared_parameters(datasources):
+        assert parameter in shown, f"{parameter} has no control on any dashboard"
 
 
 def test_windows_match_sheets_and_dashboards(workbook):

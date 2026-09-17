@@ -2256,7 +2256,7 @@
       <size maxheight='950' maxwidth='1500' minheight='950' minwidth='1500' />
       <zones>
         <zone h='100000' id='1' type-v2='layout-basic' w='100000' x='0' y='0'>
-        <zone h='7000' id='2' type-v2='text' w='100000' x='0' y='0'>
+        <zone h='7000' id='2' type-v2='text' w='78000' x='0' y='0'>
           <formatted-text>
             <run bold='true' fontsize='16'>Where the Margin Actually Is</run>
             <run>&#13;&#10;</run>
@@ -2266,6 +2266,7 @@
         <zone h='46000' id='3' name="Category Contribution" w='50000' x='0' y='7000' />
         <zone h='46000' id='4' name="Promised vs Realised Margin" w='50000' x='50000' y='7000' />
         <zone h='47000' id='5' name="Margin Trend by Category" w='100000' x='0' y='53000' />
+        <zone h='7000' id='6' param="[Parameters].[Parameter 1]" type-v2='paramctrl' w='22000' x='78000' y='0' />
         </zone>
       </zones>
       <simple-id uuid="{2d7f3276-7628-575f-bc16-c69f764385af}" />
@@ -2345,6 +2346,11 @@
           </strip>
           <strip size='31'>
             <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param="[Parameters].[Parameter 1]" type='parameter' />
           </strip>
         </edge>
       </cards>
