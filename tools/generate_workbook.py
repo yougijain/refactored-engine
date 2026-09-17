@@ -6,6 +6,11 @@ together. Reading the schemas out of DuckDB means every field name and type in t
 matches the published CSVs exactly, and a schema change cannot silently leave a dead
 reference behind in the workbook.
 
+The output targets the Tableau 2026.1 document format and follows Tableau's guidance for
+directly authored workbooks: `version` matches the schema, and the manifest is a single
+`<ManifestByVersion />`. tests/test_workbook_schema.py validates it against Tableau's
+published XSD, vendored in tableau/schema/.
+
 WARNING: this OVERWRITES the workbook. Once it has been styled in Tableau Desktop, treat
 the .twb as the source of truth and stop running this. It exists to rebuild the scaffold
 after a schema change, and to document how the workbook was constructed.
@@ -24,6 +29,8 @@ import duckdb
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "tableau" / "retail_margin_intelligence.twb"
 NS = uuid.UUID("6f9619ff-8b86-d011-b42d-00c04fc964ff")
+# Tableau document format. Must match the vendored XSD in tableau/schema/.
+TWB_VERSION = "26.1"
 
 # duckdb type -> (tableau local type, remote type code, default aggregation, role, class)
 TYPE_MAP = {
@@ -175,7 +182,7 @@ def base_type(duck_type: str):
 def datasource_xml(key, caption, table, columns) -> str:
     ds, conn, filename = f"federated.{key}", f"textscan.{key}", f"{table}.csv"
     parts = [
-        f"    <datasource caption={a(caption)} inline='true' name={a(ds)} version='18.1'>",
+        f"    <datasource caption={a(caption)} inline='true' name={a(ds)} version='{TWB_VERSION}'>",
         "      <connection class='federated'>",
         "        <named-connections>",
         f"          <named-connection caption={a(filename)} name={a(conn)}>",
@@ -220,7 +227,7 @@ def datasource_xml(key, caption, table, columns) -> str:
 
 def parameters_xml() -> str:
     return "\n".join([
-        "    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>",
+        f"    <datasource hasconnection='false' inline='true' name='Parameters' version='{TWB_VERSION}'>",
         "      <aliases enabled='yes' />",
         "      <column caption='Margin Basis' datatype='string' name='[Parameter 1]' param-domain-type='list' "
         "role='measure' type='nominal' value='&quot;Contribution Margin&quot;'>",
@@ -641,6 +648,46 @@ DASHBOARDS = [
 ]
 
 
+# Parameters whose control card is shown on a worksheet.
+SHEET_PARAMETERS: dict[str, list[str]] = {}
+
+
+def worksheet_cards(parameters=()) -> str:
+    """The shelf and card layout Tableau Desktop writes for a new worksheet."""
+    right = []
+    if parameters:
+        right = [
+            "        <edge name='right'>",
+            "          <strip size='160'>",
+            *[f"            <card param={a(p)} type='parameter' />" for p in parameters],
+            "          </strip>",
+            "        </edge>",
+        ]
+    return "\n".join([
+        "      <cards>",
+        "        <edge name='left'>",
+        "          <strip size='160'>",
+        "            <card type='pages' />",
+        "            <card type='filters' />",
+        "            <card type='marks' />",
+        "          </strip>",
+        "        </edge>",
+        "        <edge name='top'>",
+        "          <strip size='2147483647'>",
+        "            <card type='columns' />",
+        "          </strip>",
+        "          <strip size='2147483647'>",
+        "            <card type='rows' />",
+        "          </strip>",
+        "          <strip size='31'>",
+        "            <card type='title' />",
+        "          </strip>",
+        "        </edge>",
+        *right,
+        "      </cards>",
+    ])
+
+
 def main() -> None:
     con = duckdb.connect(str(ROOT / "data" / "warehouse.duckdb"), read_only=True)
     columns = {key: con.execute(f"describe {table}").fetchall() for key, _c, table in SOURCES}
@@ -653,13 +700,18 @@ def main() -> None:
     for sheet in SHEET_NAMES:
         windows += [
             f"    <window class='worksheet' name={a(sheet)}>",
+            worksheet_cards(SHEET_PARAMETERS.get(sheet, ())),
             "      <viewpoint><zoom type='entire-view' /></viewpoint>",
             f"      <simple-id uuid={a(uid('win:' + sheet))} />",
             "    </window>",
         ]
-    for name, *_rest in DASHBOARDS:
+    for name, _title, _subtitle, zones, *_rest in DASHBOARDS:
         windows += [
             f"    <window class='dashboard' name={a(name)}>",
+            "      <viewpoints>",
+            *[f"        <viewpoint name={a(sheet)}><zoom type='entire-view' /></viewpoint>"
+              for sheet, *_xywh in zones],
+            "      </viewpoints>",
             "      <active id='-1' />",
             f"      <simple-id uuid={a(uid('win:' + name))} />",
             "    </window>",
@@ -668,9 +720,11 @@ def main() -> None:
 
     document = "\n".join([
         "<?xml version='1.0' encoding='utf-8' ?>",
-        "<!-- build 20261.0 -->",
-        "<workbook original-version='18.1' source-build='2022.4.0' source-platform='win' version='18.1' "
-        "xmlns:user='http://www.tableausoftware.com/xml/user'>",
+        f"<workbook original-version='{TWB_VERSION}' source-build='0.0.0 (0000.0.0.0)' source-platform='win' "
+        f"version='{TWB_VERSION}' xmlns:user='http://www.tableausoftware.com/xml/user'>",
+        "  <document-format-change-manifest>",
+        "    <ManifestByVersion />",
+        "  </document-format-change-manifest>",
         "  <preferences>",
         "    <preference name='ui.encoding.shelf.height' value='24' />",
         "    <preference name='ui.shelf.height' value='26' />",
@@ -685,6 +739,9 @@ def main() -> None:
         "\n".join(dashboard(*d) for d in DASHBOARDS),
         "  </dashboards>",
         "\n".join(windows),
+        "  <explain-data enabled-for-viewer='true' extreme-values-enabled-for-all='true'>",
+        "    <explanation-types />",
+        "  </explain-data>",
         "</workbook>",
         "",
     ])

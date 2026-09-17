@@ -1,12 +1,14 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<!-- build 20261.0 -->
-<workbook original-version='18.1' source-build='2022.4.0' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+<workbook original-version='26.1' source-build='0.0.0 (0000.0.0.0)' source-platform='win' version='26.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <ManifestByVersion />
+  </document-format-change-manifest>
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
     <preference name='ui.shelf.height' value='26' />
   </preferences>
   <datasources>
-    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='26.1'>
       <aliases enabled='yes' />
       <column caption='Margin Basis' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;Contribution Margin&quot;'>
         <calculation class='tableau' formula='&quot;Contribution Margin&quot;' />
@@ -16,7 +18,7 @@
         </members>
       </column>
     </datasource>
-    <datasource caption="Order Lines" inline='true' name="federated.oi" version='18.1'>
+    <datasource caption="Order Lines" inline='true' name="federated.oi" version='26.1'>
       <connection class='federated'>
         <named-connections>
           <named-connection caption="fct_order_items.csv" name="textscan.oi">
@@ -463,7 +465,7 @@
         <calculation class='tableau' formula="IF [Parameters].[Parameter 1] = 'Contribution Margin' THEN SUM([contribution_margin]) ELSE SUM([net_revenue]) END" />
       </column>
     </datasource>
-    <datasource caption="Fulfilment" inline='true' name="federated.ful" version='18.1'>
+    <datasource caption="Fulfilment" inline='true' name="federated.ful" version='26.1'>
       <connection class='federated'>
         <named-connections>
           <named-connection caption="fct_fulfilment_daily.csv" name="textscan.ful">
@@ -689,7 +691,7 @@
         <calculation class='tableau' formula="SUM([net_shipping_cost]) / SUM([orders])" />
       </column>
     </datasource>
-    <datasource caption="Discount Bands" inline='true' name="federated.dsc" version='18.1'>
+    <datasource caption="Discount Bands" inline='true' name="federated.dsc" version='26.1'>
       <connection class='federated'>
         <named-connections>
           <named-connection caption="fct_discount_bands.csv" name="textscan.dsc">
@@ -913,7 +915,7 @@
         <calculation class='tableau' formula="SUM([units]) / SUM([order_lines])" />
       </column>
     </datasource>
-    <datasource caption="Cohort Repeat" inline='true' name="federated.coh" version='18.1'>
+    <datasource caption="Cohort Repeat" inline='true' name="federated.coh" version='26.1'>
       <connection class='federated'>
         <named-connections>
           <named-connection caption="fct_cohort_repeat.csv" name="textscan.coh">
@@ -1065,7 +1067,7 @@
         <calculation class='tableau' formula="SUM([cumulative_contribution_margin]) / SUM([cohort_customers])" />
       </column>
     </datasource>
-    <datasource caption="Channel Payback" inline='true' name="federated.pay" version='18.1'>
+    <datasource caption="Channel Payback" inline='true' name="federated.pay" version='26.1'>
       <connection class='federated'>
         <named-connections>
           <named-connection caption="fct_channel_payback.csv" name="textscan.pay">
@@ -1231,7 +1233,7 @@
         <calculation class='tableau' formula="SUM([cumulative_contribution_margin]) / SUM([acquisition_spend])" />
       </column>
     </datasource>
-    <datasource caption="Returns" inline='true' name="federated.ret" version='18.1'>
+    <datasource caption="Returns" inline='true' name="federated.ret" version='26.1'>
       <connection class='federated'>
         <named-connections>
           <named-connection caption="fct_returns.csv" name="textscan.ret">
@@ -1504,7 +1506,7 @@
         <calculation class='tableau' formula="SUM(IIF([is_restocked], 0, [margin_lost])) / SUM([margin_lost])" />
       </column>
     </datasource>
-    <datasource caption="Product" inline='true' name="federated.prd" version='18.1'>
+    <datasource caption="Product" inline='true' name="federated.prd" version='26.1'>
       <connection class='federated'>
         <named-connections>
           <named-connection caption="dim_product.csv" name="textscan.prd">
@@ -2326,60 +2328,281 @@
   </dashboards>
   <windows source-height='30'>
     <window class='worksheet' name="Category Contribution">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
       <viewpoint><zoom type='entire-view' /></viewpoint>
       <simple-id uuid="{c549f425-0c5b-5c10-b58c-9fe49dc83329}" />
     </window>
     <window class='worksheet' name="Promised vs Realised Margin">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
       <viewpoint><zoom type='entire-view' /></viewpoint>
       <simple-id uuid="{46f692aa-d641-5e78-bfa7-ac6e1815da1f}" />
     </window>
     <window class='worksheet' name="Margin Trend by Category">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
       <viewpoint><zoom type='entire-view' /></viewpoint>
       <simple-id uuid="{847ca5b0-2e5e-5166-bc5e-a53b330e03e5}" />
     </window>
     <window class='worksheet' name="Discount Elasticity">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
       <viewpoint><zoom type='entire-view' /></viewpoint>
       <simple-id uuid="{e5eb08d5-e09f-5671-a167-5f8083240a18}" />
     </window>
     <window class='worksheet' name="Units per Line by Depth">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
       <viewpoint><zoom type='entire-view' /></viewpoint>
       <simple-id uuid="{4b04c581-06db-5320-b2e1-ec076bbec1c0}" />
     </window>
     <window class='worksheet' name="On-Time Rate by Lane">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
       <viewpoint><zoom type='entire-view' /></viewpoint>
       <simple-id uuid="{84db56d6-9627-5971-ac3b-e8b2b0845ffb}" />
     </window>
     <window class='worksheet' name="Revenue on Late Parcels">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
       <viewpoint><zoom type='entire-view' /></viewpoint>
       <simple-id uuid="{29c9699c-0bb2-534b-afe8-54ebc1a63c88}" />
     </window>
     <window class='worksheet' name="First-Order Experience">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
       <viewpoint><zoom type='entire-view' /></viewpoint>
       <simple-id uuid="{9e136ae0-ba33-558a-821b-8c047ef38664}" />
     </window>
     <window class='worksheet' name="CAC Payback by Channel">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
       <viewpoint><zoom type='entire-view' /></viewpoint>
       <simple-id uuid="{2783499d-233d-5f3e-a717-e10d81d8ceff}" />
     </window>
     <window class='worksheet' name="Return Reasons by Margin Lost">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
       <viewpoint><zoom type='entire-view' /></viewpoint>
       <simple-id uuid="{7d650b12-b902-589e-bd8f-1aa1ea89b038}" />
     </window>
     <window class='dashboard' name="1 · Margin Reality">
+      <viewpoints>
+        <viewpoint name="Category Contribution"><zoom type='entire-view' /></viewpoint>
+        <viewpoint name="Promised vs Realised Margin"><zoom type='entire-view' /></viewpoint>
+        <viewpoint name="Margin Trend by Category"><zoom type='entire-view' /></viewpoint>
+      </viewpoints>
       <active id='-1' />
       <simple-id uuid="{6f438f56-2515-5490-a7f4-bb1645ec41ea}" />
     </window>
     <window class='dashboard' name="2 · Pricing &amp; Discounting">
+      <viewpoints>
+        <viewpoint name="Discount Elasticity"><zoom type='entire-view' /></viewpoint>
+        <viewpoint name="Units per Line by Depth"><zoom type='entire-view' /></viewpoint>
+      </viewpoints>
       <active id='-1' />
       <simple-id uuid="{18efb0d9-5809-5ec9-853b-ec33b0a92858}" />
     </window>
     <window class='dashboard' name="3 · Fulfilment &amp; Its Cost">
+      <viewpoints>
+        <viewpoint name="On-Time Rate by Lane"><zoom type='entire-view' /></viewpoint>
+        <viewpoint name="Revenue on Late Parcels"><zoom type='entire-view' /></viewpoint>
+        <viewpoint name="First-Order Experience"><zoom type='entire-view' /></viewpoint>
+      </viewpoints>
       <active id='-1' />
       <simple-id uuid="{89d4ba66-e8dc-5f9e-9a6b-7db297b30172}" />
     </window>
     <window class='dashboard' name="4 · Acquisition &amp; Returns">
+      <viewpoints>
+        <viewpoint name="CAC Payback by Channel"><zoom type='entire-view' /></viewpoint>
+        <viewpoint name="Return Reasons by Margin Lost"><zoom type='entire-view' /></viewpoint>
+      </viewpoints>
       <active id='-1' />
       <simple-id uuid="{8655cbd5-9988-50e2-b024-b6b7d3800fe2}" />
     </window>
   </windows>
+  <explain-data enabled-for-viewer='true' extreme-values-enabled-for-all='true'>
+    <explanation-types />
+  </explain-data>
 </workbook>
