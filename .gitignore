@@ -1,14 +1,10 @@
-# Build artifact - rebuilt by src/build_marts.py from the committed raw extracts
 data/warehouse.duckdb
-
-# Tableau working files
 *.twbx
 *.twb.bak
 *.hyper
 *.tde
 Book*.twb
 *.log
-
 .venv/
 __pycache__/
 *.pyc

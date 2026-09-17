@@ -1,0 +1,5 @@
+plan_id,plan_name,plan_tier,list_price_per_seat_month,min_seats,max_seats
+PLN-STARTER,Starter,1,25,2,25
+PLN-GROWTH,Growth,2,45,10,90
+PLN-SCALE,Scale,3,75,40,350
+PLN-ENTERPRISE,Enterprise,4,110,150,1500
