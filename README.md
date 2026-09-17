@@ -60,7 +60,7 @@ flowchart LR
   I --> M["marts<br/>8 modelled tables"]
   M --> C["data/marts/*.csv<br/>published interface"]
   C --> T["Tableau workbook<br/>10 sheets, 4 dashboards"]
-  M --> Q["pytest<br/>69 contract tests"]
+  M --> Q["pytest<br/>75 tests"]
 ```
 
 Raw extracts are committed, so a clone can open the workbook immediately. The DuckDB file is
@@ -78,8 +78,9 @@ src/
   sql/intermediate/      the margin walk and the first-order profile
   sql/marts/             eight published tables
 tableau/            the workbook
+  schema/                Tableau's published workbook schema, vendored for validation
 tools/              workbook generator
-tests/              contract, reproducibility and workbook-integrity tests
+tests/              contract, reproducibility, workbook-integrity and schema tests
 docs/               questions, metric definitions, data dictionary, dashboard guide, findings
 ```
 
@@ -91,8 +92,9 @@ python src/build_marts.py
 pytest -q
 ```
 
-Then open `tableau/retail_margin_intelligence.twb`. It connects to `data/marts/*.csv` by
-relative path, so no configuration is needed.
+Then open `tableau/retail_margin_intelligence.twb` in **Tableau Desktop or Tableau Public
+2026.1 or later**. It connects to `data/marts/*.csv` by relative path, so no configuration is
+needed. The workbook uses the 2026.1 document format, so earlier versions will not open it.
 
 To regenerate the source extracts from scratch (they are deterministic, so this reproduces
 the committed files byte for byte):
@@ -104,7 +106,7 @@ python src/generate_raw_data.py
 ## How the numbers are kept honest
 
 The claim that every dashboard figure is auditable is enforced, not asserted. `pytest` runs
-69 tests in four groups:
+75 tests. The 54 data contract tests fall into four groups:
 
 - **Shape** — every mart exists, has rows, and has a unique non-null key.
 - **Integrity** — foreign keys resolve, returned quantities never exceed ordered ones, dates
@@ -128,7 +130,16 @@ every calculated field references a real field, every pill on a shelf was declar
 dashboard zone points at a real sheet. It catches the renamed-column-leaves-a-dead-reference
 failure that otherwise shows up as a red pill weeks later.
 
-CI runs the whole thing on every push and fails if a rebuild changes anything committed.
+`tests/test_workbook_schema.py` validates the workbook against
+[Tableau's published schema](https://github.com/tableau/tableau-document-schemas) for the
+2026.1 format, vendored in `tableau/schema/`. The two workbook test files are complementary:
+Tableau's schema checks structure but not references between parts of a workbook, which is
+exactly what the integrity tests check. Neither proves the workbook opens — Tableau's only check
+for that is a Tableau Cloud or Server endpoint — but together they rule out the ways a generated
+workbook is usually broken.
+
+CI runs the whole thing on every push — rebuilding the data, regenerating the workbook, and
+running the tests — and fails if a rebuild changes anything committed.
 
 ## Notes on the data
 

@@ -2,7 +2,8 @@
 
 `tableau/retail_margin_intelligence.twb` contains 10 worksheets across 4 dashboards. The
 workbook connects to `data/marts/*.csv` by relative path, so a fresh clone opens without any
-configuration.
+configuration. It uses the Tableau 2026.1 document format and needs Tableau Desktop or Tableau
+Public 2026.1 or later.
 
 Each dashboard answers questions from [business_questions.md](business_questions.md).
 
@@ -18,7 +19,8 @@ Answers **Q1**.
 | **Promised vs Realised Margin** | Scatter | Each product plotted as list margin (x) against realised contribution margin rate (y), sized by revenue. Points below the diagonal lost margin between the buying sheet and the P&L |
 | **Margin Trend by Category** | Area | Contribution margin over time, stacked by category |
 
-**How to read it.** Switch the parameter to *Net Revenue* and note the category ordering.
+**How to read it.** Use the *Margin Basis* control at the top right of the dashboard. Switch it
+to *Net Revenue* and note the category ordering.
 Switch back to *Contribution Margin*. Any category that moves a long way between the two
 views is one where revenue reporting has been misleading the business.
 
@@ -76,7 +78,8 @@ filter or a dimension changes. Row-level averages of rates are not used anywhere
 ## Parameter
 
 **Margin Basis** — `Contribution Margin` or `Net Revenue`. Drives the *Category
-Contribution* sheet on dashboard 1.
+Contribution* sheet. Its control is shown at the top right of dashboard 1 and beside the
+sheet itself; a test fails if any parameter has no control on a dashboard.
 
 ## Rebuilding the workbook
 
@@ -88,4 +91,10 @@ schema change.
 `tests/test_workbook_integrity.py` checks the workbook without needing Tableau installed:
 every connection resolves to a mart that exists, every column ordinal matches the CSV header,
 every calculated field references a field that exists, every pill on a shelf was declared,
-and every dashboard zone points at a real sheet.
+every dashboard zone points at a real sheet, no zones overlap, and every parameter has a
+control.
+
+`tests/test_workbook_schema.py` validates the file against Tableau's published schema for the
+2026.1 format, vendored in `tableau/schema/` — see the README there for provenance, and for
+how to move to a newer format. CI regenerates the workbook on every push and fails if the
+result differs from what is committed.
