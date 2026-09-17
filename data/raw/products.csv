@@ -1,0 +1,191 @@
+product_id,sku,product_name,category,subcategory,brand,unit_cost,list_price,weight_kg
+P00001,APP-DRE-00001,Latitude 54 Dresse 971,Apparel,Dresses,Latitude 54,14.15,38.97,0.30
+P00002,APP-KNI-00002,Brightpath Knitwear 832,Apparel,Knitwear,Brightpath,38.86,81.68,0.49
+P00003,APP-OUT-00003,Northvale Outerwear 848,Apparel,Outerwear,Northvale,13.69,32.59,0.26
+P00004,APP-KNI-00004,Puresel Knitwear 222,Apparel,Knitwear,Puresel,13.98,33.94,0.85
+P00005,APP-KNI-00005,Ellery & Co Knitwear 901,Apparel,Knitwear,Ellery & Co,21.88,51.99,1.04
+P00006,APP-DEN-00006,Puresel Denim 110,Apparel,Denim,Puresel,11.88,31.44,0.35
+P00007,APP-DEN-00007,Northvale Denim 759,Apparel,Denim,Northvale,47.22,116.94,0.35
+P00008,APP-TOP-00008,Brightpath Top 270,Apparel,Tops,Brightpath,29.93,83.50,0.74
+P00009,APP-OUT-00009,Mokkan Outerwear 128,Apparel,Outerwear,Mokkan,31.16,73.72,0.39
+P00010,APP-DEN-00010,Puresel Denim 126,Apparel,Denim,Puresel,12.88,28.00,0.86
+P00011,APP-OUT-00011,Northvale Outerwear 281,Apparel,Outerwear,Northvale,51.20,133.12,0.40
+P00012,APP-KNI-00012,Mokkan Knitwear 988,Apparel,Knitwear,Mokkan,40.19,88.93,0.43
+P00013,APP-DRE-00013,Ellery & Co Dresse 232,Apparel,Dresses,Ellery & Co,24.64,66.51,0.75
+P00014,APP-DRE-00014,Corda Dresse 406,Apparel,Dresses,Corda,37.28,87.12,0.51
+P00015,APP-TOP-00015,Corda Top 345,Apparel,Tops,Corda,26.67,66.55,1.01
+P00016,APP-KNI-00016,Brightpath Knitwear 611,Apparel,Knitwear,Brightpath,21.73,54.64,0.87
+P00017,APP-DRE-00017,Corda Dresse 741,Apparel,Dresses,Corda,11.87,27.43,0.50
+P00018,APP-DEN-00018,Latitude 54 Denim 934,Apparel,Denim,Latitude 54,26.33,62.01,0.46
+P00019,APP-TOP-00019,Brightpath Top 709,Apparel,Tops,Brightpath,29.36,65.52,0.84
+P00020,APP-DEN-00020,Ellery & Co Denim 918,Apparel,Denim,Ellery & Co,46.92,131.49,0.98
+P00021,APP-DEN-00021,Northvale Denim 222,Apparel,Denim,Northvale,21.16,52.72,1.19
+P00022,APP-KNI-00022,Northvale Knitwear 727,Apparel,Knitwear,Northvale,14.69,40.61,0.68
+P00023,APP-TOP-00023,Latitude 54 Top 130,Apparel,Tops,Latitude 54,17.74,49.85,0.94
+P00024,APP-OUT-00024,Brightpath Outerwear 533,Apparel,Outerwear,Brightpath,15.58,35.49,0.60
+P00025,APP-OUT-00025,Corda Outerwear 345,Apparel,Outerwear,Corda,48.90,125.94,0.95
+P00026,APP-DRE-00026,Corda Dresse 936,Apparel,Dresses,Corda,17.70,34.19,0.43
+P00027,APP-OUT-00027,Mokkan Outerwear 563,Apparel,Outerwear,Mokkan,13.32,31.13,0.57
+P00028,APP-DRE-00028,Mokkan Dresse 558,Apparel,Dresses,Mokkan,11.74,31.99,0.43
+P00029,APP-KNI-00029,Puresel Knitwear 529,Apparel,Knitwear,Puresel,46.27,116.07,0.57
+P00030,APP-DEN-00030,Latitude 54 Denim 950,Apparel,Denim,Latitude 54,42.48,99.97,0.22
+P00031,APP-DRE-00031,Brightpath Dresse 998,Apparel,Dresses,Brightpath,37.49,90.94,0.41
+P00032,APP-OUT-00032,Mokkan Outerwear 271,Apparel,Outerwear,Mokkan,12.40,34.46,0.92
+P00033,APP-DEN-00033,Northvale Denim 655,Apparel,Denim,Northvale,17.87,44.67,0.31
+P00034,APP-DRE-00034,Latitude 54 Dresse 112,Apparel,Dresses,Latitude 54,21.62,41.79,0.29
+P00035,APP-OUT-00035,Northvale Outerwear 214,Apparel,Outerwear,Northvale,64.46,131.59,1.15
+P00036,APP-DRE-00036,Latitude 54 Dresse 222,Apparel,Dresses,Latitude 54,23.99,67.23,0.66
+P00037,APP-TOP-00037,Brightpath Top 779,Apparel,Tops,Brightpath,50.61,116.64,0.78
+P00038,APP-DRE-00038,Ellery & Co Dresse 637,Apparel,Dresses,Ellery & Co,37.94,83.70,0.83
+P00039,APP-OUT-00039,Latitude 54 Outerwear 583,Apparel,Outerwear,Latitude 54,11.38,25.56,0.73
+P00040,APP-TOP-00040,Puresel Top 225,Apparel,Tops,Puresel,40.97,113.30,0.43
+P00041,APP-OUT-00041,Latitude 54 Outerwear 930,Apparel,Outerwear,Latitude 54,59.43,125.23,0.40
+P00042,APP-KNI-00042,Latitude 54 Knitwear 934,Apparel,Knitwear,Latitude 54,40.02,98.30,0.28
+P00043,APP-DEN-00043,Puresel Denim 158,Apparel,Denim,Puresel,37.81,107.20,0.73
+P00044,APP-DEN-00044,Corda Denim 701,Apparel,Denim,Corda,6.66,20.90,0.23
+P00045,APP-KNI-00045,Puresel Knitwear 971,Apparel,Knitwear,Puresel,29.43,70.92,0.76
+P00046,APP-DRE-00046,Brightpath Dresse 911,Apparel,Dresses,Brightpath,51.08,117.17,0.38
+P00047,APP-DRE-00047,Puresel Dresse 535,Apparel,Dresses,Puresel,45.25,95.89,0.49
+P00048,APP-DRE-00048,Latitude 54 Dresse 450,Apparel,Dresses,Latitude 54,55.51,122.50,1.17
+P00049,APP-TOP-00049,Brightpath Top 937,Apparel,Tops,Brightpath,18.90,45.89,0.62
+P00050,APP-KNI-00050,Brightpath Knitwear 823,Apparel,Knitwear,Brightpath,49.87,116.54,0.50
+P00051,APP-DEN-00051,Corda Denim 672,Apparel,Denim,Corda,17.54,43.18,0.68
+P00052,APP-DRE-00052,Corda Dresse 902,Apparel,Dresses,Corda,24.03,64.55,0.89
+P00053,APP-TOP-00053,Latitude 54 Top 833,Apparel,Tops,Latitude 54,38.03,103.71,0.54
+P00054,FOO-SAN-00054,Mokkan Sandal 922,Footwear,Sandals,Mokkan,29.51,59.52,1.72
+P00055,FOO-TRA-00055,Ellery & Co Trainer 722,Footwear,Trainers,Ellery & Co,19.14,40.68,0.92
+P00056,FOO-SAN-00056,Puresel Sandal 949,Footwear,Sandals,Puresel,44.87,105.15,1.56
+P00057,FOO-TRA-00057,Puresel Trainer 483,Footwear,Trainers,Puresel,26.18,65.94,1.29
+P00058,FOO-TRA-00058,Brightpath Trainer 178,Footwear,Trainers,Brightpath,74.05,156.81,1.89
+P00059,FOO-TRA-00059,Latitude 54 Trainer 379,Footwear,Trainers,Latitude 54,70.04,129.93,1.44
+P00060,FOO-FOR-00060,Corda Formal 419,Footwear,Formal,Corda,65.94,139.31,1.80
+P00061,FOO-TRA-00061,Northvale Trainer 705,Footwear,Trainers,Northvale,19.15,44.28,1.54
+P00062,FOO-FOR-00062,Latitude 54 Formal 809,Footwear,Formal,Latitude 54,51.15,120.05,0.93
+P00063,FOO-FOR-00063,Northvale Formal 673,Footwear,Formal,Northvale,16.67,36.53,1.07
+P00064,FOO-BOO-00064,Mokkan Boot 827,Footwear,Boots,Mokkan,42.64,93.30,1.34
+P00065,FOO-SAN-00065,Ellery & Co Sandal 691,Footwear,Sandals,Ellery & Co,53.89,94.68,1.09
+P00066,FOO-SAN-00066,Puresel Sandal 860,Footwear,Sandals,Puresel,48.93,111.95,0.95
+P00067,FOO-SAN-00067,Corda Sandal 606,Footwear,Sandals,Corda,31.42,78.15,1.46
+P00068,FOO-SAN-00068,Corda Sandal 503,Footwear,Sandals,Corda,41.31,106.66,1.61
+P00069,FOO-SAN-00069,Brightpath Sandal 890,Footwear,Sandals,Brightpath,60.21,148.15,0.82
+P00070,FOO-BOO-00070,Latitude 54 Boot 196,Footwear,Boots,Latitude 54,40.35,81.65,1.32
+P00071,FOO-BOO-00071,Puresel Boot 370,Footwear,Boots,Puresel,55.96,122.76,1.04
+P00072,FOO-SAN-00072,Brightpath Sandal 472,Footwear,Sandals,Brightpath,23.58,58.95,1.57
+P00073,FOO-BOO-00073,Brightpath Boot 379,Footwear,Boots,Brightpath,38.42,79.76,1.91
+P00074,FOO-TRA-00074,Puresel Trainer 609,Footwear,Trainers,Puresel,47.79,128.17,1.01
+P00075,FOO-FOR-00075,Latitude 54 Formal 286,Footwear,Formal,Latitude 54,26.42,51.74,1.17
+P00076,FOO-TRA-00076,Puresel Trainer 695,Footwear,Trainers,Puresel,34.28,83.39,1.89
+P00077,FOO-BOO-00077,Ellery & Co Boot 761,Footwear,Boots,Ellery & Co,40.92,105.21,1.09
+P00078,FOO-SAN-00078,Corda Sandal 900,Footwear,Sandals,Corda,61.02,128.93,1.08
+P00079,FOO-SAN-00079,Mokkan Sandal 690,Footwear,Sandals,Mokkan,44.77,67.74,0.97
+P00080,FOO-SAN-00080,Ellery & Co Sandal 743,Footwear,Sandals,Ellery & Co,23.30,49.77,1.10
+P00081,ELE-WEA-00081,Mokkan Wearable 608,Electronics,Wearables,Mokkan,365.93,425.20,5.73
+P00082,ELE-AUD-00082,Puresel Audio 806,Electronics,Audio,Puresel,378.57,477.87,4.35
+P00083,ELE-AUD-00083,Mokkan Audio 201,Electronics,Audio,Mokkan,84.78,103.49,3.24
+P00084,ELE-WEA-00084,Corda Wearable 636,Electronics,Wearables,Corda,171.99,208.44,2.93
+P00085,ELE-WEA-00085,Ellery & Co Wearable 752,Electronics,Wearables,Ellery & Co,146.43,166.79,2.93
+P00086,ELE-AUD-00086,Brightpath Audio 149,Electronics,Audio,Brightpath,211.02,263.09,4.92
+P00087,ELE-AUD-00087,Brightpath Audio 927,Electronics,Audio,Brightpath,390.14,437.19,2.57
+P00088,ELE-AUD-00088,Mokkan Audio 658,Electronics,Audio,Mokkan,299.27,384.21,0.93
+P00089,ELE-AUD-00089,Corda Audio 419,Electronics,Audio,Corda,251.96,337.55,2.30
+P00090,ELE-AUD-00090,Corda Audio 849,Electronics,Audio,Corda,243.16,290.67,5.96
+P00091,ELE-SMA-00091,Mokkan Small Appliance 709,Electronics,Small Appliances,Mokkan,351.42,437.76,2.11
+P00092,ELE-ACC-00092,Puresel Accessorie 389,Electronics,Accessories,Puresel,181.55,209.32,4.99
+P00093,ELE-AUD-00093,Puresel Audio 620,Electronics,Audio,Puresel,141.92,161.57,0.75
+P00094,ELE-ACC-00094,Latitude 54 Accessorie 164,Electronics,Accessories,Latitude 54,316.81,384.95,4.48
+P00095,ELE-SMA-00095,Latitude 54 Small Appliance 239,Electronics,Small Appliances,Latitude 54,361.66,396.85,2.53
+P00096,ELE-ACC-00096,Mokkan Accessorie 176,Electronics,Accessories,Mokkan,404.98,448.18,1.62
+P00097,ELE-AUD-00097,Corda Audio 601,Electronics,Audio,Corda,221.27,260.61,2.41
+P00098,ELE-AUD-00098,Brightpath Audio 944,Electronics,Audio,Brightpath,105.53,126.60,3.23
+P00099,ELE-SMA-00099,Latitude 54 Small Appliance 701,Electronics,Small Appliances,Latitude 54,361.90,472.93,5.97
+P00100,ELE-ACC-00100,Latitude 54 Accessorie 885,Electronics,Accessories,Latitude 54,331.49,386.68,3.33
+P00101,ELE-SMA-00101,Corda Small Appliance 324,Electronics,Small Appliances,Corda,97.57,112.24,0.66
+P00102,ELE-SMA-00102,Corda Small Appliance 945,Electronics,Small Appliances,Corda,215.90,243.13,4.80
+P00103,ELE-SMA-00103,Latitude 54 Small Appliance 785,Electronics,Small Appliances,Latitude 54,90.01,111.90,5.50
+P00104,ELE-AUD-00104,Brightpath Audio 376,Electronics,Audio,Brightpath,158.84,175.32,5.65
+P00105,ELE-WEA-00105,Northvale Wearable 938,Electronics,Wearables,Northvale,326.10,393.89,5.09
+P00106,ELE-ACC-00106,Ellery & Co Accessorie 979,Electronics,Accessories,Ellery & Co,91.61,104.67,3.85
+P00107,ELE-WEA-00107,Corda Wearable 155,Electronics,Wearables,Corda,96.86,109.03,1.62
+P00108,ELE-AUD-00108,Ellery & Co Audio 543,Electronics,Audio,Ellery & Co,100.11,119.88,3.45
+P00109,ELE-AUD-00109,Corda Audio 482,Electronics,Audio,Corda,160.85,186.86,0.52
+P00110,ELE-SMA-00110,Puresel Small Appliance 411,Electronics,Small Appliances,Puresel,351.38,411.22,5.40
+P00111,HOM-STO-00111,Brightpath Storage 900,Home & Kitchen,Storage,Brightpath,96.17,166.13,5.75
+P00112,HOM-BED-00112,Puresel Bedding 825,Home & Kitchen,Bedding,Puresel,107.79,172.61,2.57
+P00113,HOM-STO-00113,Mokkan Storage 819,Home & Kitchen,Storage,Mokkan,50.86,86.78,4.17
+P00114,HOM-BED-00114,Puresel Bedding 242,Home & Kitchen,Bedding,Puresel,68.55,111.53,11.78
+P00115,HOM-LIG-00115,Puresel Lighting 154,Home & Kitchen,Lighting,Puresel,70.63,110.04,4.09
+P00116,HOM-BED-00116,Latitude 54 Bedding 190,Home & Kitchen,Bedding,Latitude 54,25.83,38.00,3.43
+P00117,HOM-BED-00117,Ellery & Co Bedding 923,Home & Kitchen,Bedding,Ellery & Co,78.63,134.40,10.24
+P00118,HOM-TAB-00118,Ellery & Co Tableware 820,Home & Kitchen,Tableware,Ellery & Co,15.17,26.40,5.79
+P00119,HOM-STO-00119,Puresel Storage 828,Home & Kitchen,Storage,Puresel,127.61,192.22,8.93
+P00120,HOM-LIG-00120,Northvale Lighting 554,Home & Kitchen,Lighting,Northvale,57.31,97.95,9.31
+P00121,HOM-TAB-00121,Mokkan Tableware 954,Home & Kitchen,Tableware,Mokkan,73.12,95.77,8.09
+P00122,HOM-COO-00122,Ellery & Co Cookware 832,Home & Kitchen,Cookware,Ellery & Co,31.57,54.16,7.78
+P00123,HOM-LIG-00123,Northvale Lighting 641,Home & Kitchen,Lighting,Northvale,84.35,135.84,5.97
+P00124,HOM-BED-00124,Latitude 54 Bedding 776,Home & Kitchen,Bedding,Latitude 54,14.70,30.80,8.96
+P00125,HOM-LIG-00125,Latitude 54 Lighting 625,Home & Kitchen,Lighting,Latitude 54,65.07,100.06,4.82
+P00126,HOM-BED-00126,Puresel Bedding 861,Home & Kitchen,Bedding,Puresel,22.78,33.23,6.61
+P00127,HOM-COO-00127,Latitude 54 Cookware 913,Home & Kitchen,Cookware,Latitude 54,116.95,194.09,6.34
+P00128,HOM-BED-00128,Northvale Bedding 829,Home & Kitchen,Bedding,Northvale,12.57,22.27,4.21
+P00129,HOM-COO-00129,Ellery & Co Cookware 999,Home & Kitchen,Cookware,Ellery & Co,40.16,59.96,10.80
+P00130,HOM-COO-00130,Ellery & Co Cookware 889,Home & Kitchen,Cookware,Ellery & Co,149.72,206.19,2.96
+P00131,HOM-COO-00131,Mokkan Cookware 958,Home & Kitchen,Cookware,Mokkan,73.47,107.23,2.78
+P00132,HOM-COO-00132,Ellery & Co Cookware 522,Home & Kitchen,Cookware,Ellery & Co,39.88,68.52,2.76
+P00133,HOM-COO-00133,Latitude 54 Cookware 732,Home & Kitchen,Cookware,Latitude 54,110.37,184.72,6.19
+P00134,HOM-COO-00134,Brightpath Cookware 912,Home & Kitchen,Cookware,Brightpath,41.62,68.67,9.79
+P00135,HOM-BED-00135,Ellery & Co Bedding 297,Home & Kitchen,Bedding,Ellery & Co,87.29,140.35,5.68
+P00136,HOM-COO-00136,Latitude 54 Cookware 949,Home & Kitchen,Cookware,Latitude 54,18.21,29.59,8.65
+P00137,HOM-BED-00137,Mokkan Bedding 277,Home & Kitchen,Bedding,Mokkan,19.37,31.33,2.77
+P00138,HOM-BED-00138,Ellery & Co Bedding 633,Home & Kitchen,Bedding,Ellery & Co,48.20,76.21,9.83
+P00139,HOM-COO-00139,Ellery & Co Cookware 168,Home & Kitchen,Cookware,Ellery & Co,31.36,53.02,9.62
+P00140,HOM-LIG-00140,Brightpath Lighting 687,Home & Kitchen,Lighting,Brightpath,29.62,50.12,2.49
+P00141,HOM-COO-00141,Ellery & Co Cookware 990,Home & Kitchen,Cookware,Ellery & Co,104.86,169.49,1.80
+P00142,HOM-COO-00142,Northvale Cookware 155,Home & Kitchen,Cookware,Northvale,75.86,138.70,3.30
+P00143,HOM-TAB-00143,Mokkan Tableware 266,Home & Kitchen,Tableware,Mokkan,13.98,21.76,3.72
+P00144,HOM-COO-00144,Puresel Cookware 531,Home & Kitchen,Cookware,Puresel,110.51,174.00,11.90
+P00145,BEA-COS-00145,Ellery & Co Cosmetic 224,Beauty,Cosmetics,Ellery & Co,27.47,66.69,0.34
+P00146,BEA-FRA-00146,Mokkan Fragrance 928,Beauty,Fragrance,Mokkan,15.82,45.85,0.39
+P00147,BEA-HAI-00147,Mokkan Haircare 972,Beauty,Haircare,Mokkan,29.57,66.12,0.14
+P00148,BEA-HAI-00148,Brightpath Haircare 497,Beauty,Haircare,Brightpath,31.03,75.06,0.38
+P00149,BEA-FRA-00149,Mokkan Fragrance 884,Beauty,Fragrance,Mokkan,26.57,72.73,0.39
+P00150,BEA-HAI-00150,Puresel Haircare 378,Beauty,Haircare,Puresel,26.22,59.37,0.35
+P00151,BEA-SKI-00151,Brightpath Skincare 241,Beauty,Skincare,Brightpath,21.90,57.14,0.21
+P00152,BEA-SKI-00152,Northvale Skincare 376,Beauty,Skincare,Northvale,10.18,28.36,0.21
+P00153,BEA-FRA-00153,Ellery & Co Fragrance 475,Beauty,Fragrance,Ellery & Co,16.34,34.78,0.34
+P00154,BEA-COS-00154,Ellery & Co Cosmetic 838,Beauty,Cosmetics,Ellery & Co,14.41,38.78,0.50
+P00155,BEA-FRA-00155,Latitude 54 Fragrance 534,Beauty,Fragrance,Latitude 54,16.28,44.92,0.42
+P00156,BEA-SKI-00156,Mokkan Skincare 132,Beauty,Skincare,Mokkan,6.05,17.16,0.24
+P00157,BEA-COS-00157,Ellery & Co Cosmetic 338,Beauty,Cosmetics,Ellery & Co,7.01,19.98,0.15
+P00158,BEA-COS-00158,Latitude 54 Cosmetic 796,Beauty,Cosmetics,Latitude 54,25.78,70.58,0.43
+P00159,BEA-SKI-00159,Latitude 54 Skincare 459,Beauty,Skincare,Latitude 54,6.59,18.13,0.19
+P00160,BEA-FRA-00160,Puresel Fragrance 166,Beauty,Fragrance,Puresel,23.31,65.82,0.26
+P00161,BEA-FRA-00161,Northvale Fragrance 750,Beauty,Fragrance,Northvale,20.58,61.46,0.12
+P00162,BEA-HAI-00162,Ellery & Co Haircare 690,Beauty,Haircare,Ellery & Co,20.66,63.36,0.45
+P00163,BEA-HAI-00163,Brightpath Haircare 315,Beauty,Haircare,Brightpath,13.92,39.36,0.42
+P00164,BEA-COS-00164,Ellery & Co Cosmetic 770,Beauty,Cosmetics,Ellery & Co,24.71,55.17,0.39
+P00165,BEA-HAI-00165,Corda Haircare 332,Beauty,Haircare,Corda,20.77,59.82,0.29
+P00166,BEA-SKI-00166,Ellery & Co Skincare 699,Beauty,Skincare,Ellery & Co,19.57,74.32,0.41
+P00167,BEA-FRA-00167,Latitude 54 Fragrance 795,Beauty,Fragrance,Latitude 54,21.13,59.63,0.42
+P00168,BEA-FRA-00168,Puresel Fragrance 170,Beauty,Fragrance,Puresel,24.16,67.15,0.25
+P00169,BEA-COS-00169,Ellery & Co Cosmetic 688,Beauty,Cosmetics,Ellery & Co,23.10,50.39,0.34
+P00170,SPO-CYC-00170,Corda Cycling 740,Sports & Outdoors,Cycling,Corda,120.57,216.26,1.33
+P00171,SPO-CYC-00171,Ellery & Co Cycling 588,Sports & Outdoors,Cycling,Ellery & Co,42.12,68.19,8.92
+P00172,SPO-FIT-00172,Ellery & Co Fitnes 618,Sports & Outdoors,Fitness,Ellery & Co,50.70,93.79,1.89
+P00173,SPO-SWI-00173,Mokkan Swim 924,Sports & Outdoors,Swim,Mokkan,41.68,77.82,7.89
+P00174,SPO-FIT-00174,Latitude 54 Fitnes 151,Sports & Outdoors,Fitness,Latitude 54,148.10,211.86,8.17
+P00175,SPO-CAM-00175,Ellery & Co Camping 966,Sports & Outdoors,Camping,Ellery & Co,128.23,241.41,8.81
+P00176,SPO-CYC-00176,Ellery & Co Cycling 630,Sports & Outdoors,Cycling,Ellery & Co,78.37,169.90,5.24
+P00177,SPO-CYC-00177,Latitude 54 Cycling 248,Sports & Outdoors,Cycling,Latitude 54,158.51,276.02,1.19
+P00178,SPO-FIT-00178,Corda Fitnes 167,Sports & Outdoors,Fitness,Corda,108.27,226.66,7.81
+P00179,SPO-FIT-00179,Mokkan Fitnes 640,Sports & Outdoors,Fitness,Mokkan,30.73,49.48,2.58
+P00180,SPO-FIT-00180,Brightpath Fitnes 909,Sports & Outdoors,Fitness,Brightpath,128.70,219.47,7.48
+P00181,SPO-CAM-00181,Ellery & Co Camping 922,Sports & Outdoors,Camping,Ellery & Co,133.01,235.91,7.75
+P00182,SPO-CYC-00182,Northvale Cycling 469,Sports & Outdoors,Cycling,Northvale,26.95,47.86,5.80
+P00183,SPO-FIT-00183,Ellery & Co Fitnes 713,Sports & Outdoors,Fitness,Ellery & Co,148.28,274.44,7.03
+P00184,SPO-SWI-00184,Ellery & Co Swim 435,Sports & Outdoors,Swim,Ellery & Co,120.05,208.78,7.70
+P00185,SPO-SWI-00185,Puresel Swim 160,Sports & Outdoors,Swim,Puresel,127.68,245.75,4.99
+P00186,SPO-FIT-00186,Latitude 54 Fitnes 411,Sports & Outdoors,Fitness,Latitude 54,138.32,272.93,1.02
+P00187,SPO-CAM-00187,Puresel Camping 246,Sports & Outdoors,Camping,Puresel,104.67,164.80,3.42
+P00188,SPO-SWI-00188,Mokkan Swim 177,Sports & Outdoors,Swim,Mokkan,98.75,166.85,1.13
+P00189,SPO-CAM-00189,Brightpath Camping 306,Sports & Outdoors,Camping,Brightpath,114.73,180.08,6.94
+P00190,SPO-CYC-00190,Puresel Cycling 999,Sports & Outdoors,Cycling,Puresel,105.15,189.90,6.04

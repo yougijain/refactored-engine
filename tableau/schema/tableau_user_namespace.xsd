@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Stand-in schema for Tableau's `user:` extension namespace.
+
+  twb_2026.1.0.xsd imports http://www.tableausoftware.com/xml/user without a schemaLocation,
+  and Tableau does not publish a schema for it: the namespace carries free-form UI state such
+  as `user:op`. Strict validators refuse to compile a schema with an unresolved import, so
+  this declares the one attribute group the TWB schema references and accepts any attribute
+  in that namespace - which is how Tableau itself treats it.
+
+  This file is part of this project, not a copy of anything published by Tableau.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.tableausoftware.com/xml/user"
+           elementFormDefault="qualified">
+  <xs:attributeGroup name="UserAttributes-AG">
+    <xs:anyAttribute namespace="##targetNamespace" processContents="lax"/>
+  </xs:attributeGroup>
+</xs:schema>

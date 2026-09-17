@@ -3,3 +3,6 @@
 * text=auto eol=lf
 *.csv text eol=lf
 *.twb text eol=lf
+
+# Tableau schemas are vendored verbatim; keep their bytes identical to upstream.
+tableau/schema/twb_*.xsd -text

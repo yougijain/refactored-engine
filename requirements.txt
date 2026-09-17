@@ -1,3 +1,5 @@
 # src/generate_raw_data.py is stdlib-only on purpose; these are for the warehouse and tests.
 duckdb>=1.0
 pytest>=8.0
+# Pure Python, so the workbook schema test runs anywhere pytest does.
+xmlschema>=4.0

@@ -1,0 +1,2614 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<workbook original-version='26.1' source-build='0.0.0 (0000.0.0.0)' source-platform='win' version='26.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <ManifestByVersion />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='26.1'>
+      <aliases enabled='yes' />
+      <column caption='Margin Basis' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;Contribution Margin&quot;'>
+        <calculation class='tableau' formula='&quot;Contribution Margin&quot;' />
+        <members>
+          <member value='&quot;Contribution Margin&quot;' />
+          <member value='&quot;Net Revenue&quot;' />
+        </members>
+      </column>
+    </datasource>
+    <datasource caption="Order Lines" inline='true' name="federated.oi" version='26.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="fct_order_items.csv" name="textscan.oi">
+            <connection class='textscan' directory='../data/marts' filename="fct_order_items.csv" password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection="textscan.oi" name="fct_order_items.csv" table="[fct_order_items#csv]" type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>order_item_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_item_id]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>order_item_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_id]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>order_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>customer_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[customer_id]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>customer_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>product_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[product_id]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>product_id</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[order_date]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>order_date</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_month</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[order_month]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>order_month</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_channel</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_channel]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>order_channel</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_sequence</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[order_sequence]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>order_sequence</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_first_order</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_first_order]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>is_first_order</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>acquisition_channel</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[acquisition_channel]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>acquisition_channel</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>region</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[region]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>region</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cohort_month</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[cohort_month]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>cohort_month</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_shipped</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_shipped]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>is_shipped</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fulfilment_centre</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[fulfilment_centre]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>fulfilment_centre</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>carrier</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[carrier]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>carrier</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_on_time</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_on_time]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>is_on_time</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>days_late</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[days_late]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>days_late</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>category</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[category]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>category</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>subcategory</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[subcategory]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>subcategory</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>brand</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[brand]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>brand</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quantity</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[quantity]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>quantity</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>unit_price</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[unit_price]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>unit_price</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gross_revenue</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[gross_revenue]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>gross_revenue</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>discount_amount</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[discount_amount]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>discount_amount</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_revenue</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[net_revenue]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>net_revenue</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>discount_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[discount_rate]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>discount_rate</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>discount_band</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[discount_band]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>discount_band</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>discount_band_rank</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[discount_band_rank]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>discount_band_rank</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_returned</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_returned]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>is_returned</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>return_reason</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[return_reason]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>return_reason</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quantity_returned</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[quantity_returned]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>quantity_returned</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>refund_amount</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[refund_amount]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>refund_amount</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_restocked</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_restocked]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>is_restocked</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cogs</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[cogs]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>cogs</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_shipping_cost</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[net_shipping_cost]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>net_shipping_cost</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>realised_revenue</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[realised_revenue]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>realised_revenue</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>contribution_margin</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[contribution_margin]</local-name>
+            <parent-name>[fct_order_items#csv]</parent-name>
+            <remote-alias>contribution_margin</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[order_sequence]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[discount_band_rank]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[days_late]' role='dimension' type='ordinal' />
+      <column caption="Contribution Margin Rate" datatype='real' default-format="p1" name='[Calculation_101]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([contribution_margin]) / SUM([net_revenue])" />
+      </column>
+      <column caption="Average Order Value" datatype='real' default-format="£#,##0.00" name='[Calculation_102]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([net_revenue]) / COUNTD([order_id])" />
+      </column>
+      <column caption="Margin per Order" datatype='real' default-format="£#,##0.00" name='[Calculation_103]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([contribution_margin]) / COUNTD([order_id])" />
+      </column>
+      <column caption="Return Line Rate" datatype='real' default-format="p1" name='[Calculation_104]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM(IIF([is_returned], 1, 0)) / COUNT([order_item_id])" />
+      </column>
+      <column caption="Freight as % of Revenue" datatype='real' default-format="p1" name='[Calculation_105]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([net_shipping_cost]) / SUM([net_revenue])" />
+      </column>
+      <column caption="Discount as % of Gross" datatype='real' default-format="p1" name='[Calculation_106]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([discount_amount]) / SUM([gross_revenue])" />
+      </column>
+      <column caption="Category Contribution Share" datatype='real' default-format="p1" name='[Calculation_107]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([contribution_margin]) / TOTAL(SUM([contribution_margin]))" />
+      </column>
+      <column caption="Margin Basis" datatype='real' default-format="£#,##0" name='[Calculation_108]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="IF [Parameters].[Parameter 1] = 'Contribution Margin' THEN SUM([contribution_margin]) ELSE SUM([net_revenue]) END" />
+      </column>
+    </datasource>
+    <datasource caption="Fulfilment" inline='true' name="federated.ful" version='26.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="fct_fulfilment_daily.csv" name="textscan.ful">
+            <connection class='textscan' directory='../data/marts' filename="fct_fulfilment_daily.csv" password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection="textscan.ful" name="fct_fulfilment_daily.csv" table="[fct_fulfilment_daily#csv]" type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>order_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[order_date]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>order_date</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_month</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[order_month]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>order_month</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fulfilment_centre</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[fulfilment_centre]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>fulfilment_centre</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>carrier</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[carrier]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>carrier</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>orders</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[orders]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>orders</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>on_time_orders</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[on_time_orders]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>on_time_orders</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>late_orders</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[late_orders]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>late_orders</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>badly_late_orders</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[badly_late_orders]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>badly_late_orders</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>days_late_total</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[days_late_total]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>days_late_total</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>avg_days_late</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[avg_days_late]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>avg_days_late</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>avg_days_to_deliver</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[avg_days_to_deliver]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>avg_days_to_deliver</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>avg_transit_days</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[avg_transit_days]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>avg_transit_days</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>shipping_cost</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[shipping_cost]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>shipping_cost</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>shipping_fee_charged</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[shipping_fee_charged]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>shipping_fee_charged</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_shipping_cost</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[net_shipping_cost]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>net_shipping_cost</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_revenue</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[net_revenue]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>net_revenue</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>contribution_margin</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[contribution_margin]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>contribution_margin</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>late_net_revenue</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[late_net_revenue]</local-name>
+            <parent-name>[fct_fulfilment_daily#csv]</parent-name>
+            <remote-alias>late_net_revenue</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption="On-Time Rate" datatype='real' default-format="p1" name='[Calculation_201]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([on_time_orders]) / SUM([orders])" />
+      </column>
+      <column caption="Average Days Late" datatype='real' default-format="n2" name='[Calculation_202]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([days_late_total]) / SUM([orders])" />
+      </column>
+      <column caption="Revenue on Late Parcels" datatype='real' default-format="£#,##0" name='[Calculation_203]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([late_net_revenue])" />
+      </column>
+      <column caption="Late Revenue Share" datatype='real' default-format="p1" name='[Calculation_204]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([late_net_revenue]) / SUM([net_revenue])" />
+      </column>
+      <column caption="Freight Subsidy per Order" datatype='real' default-format="£#,##0.00" name='[Calculation_205]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([net_shipping_cost]) / SUM([orders])" />
+      </column>
+    </datasource>
+    <datasource caption="Discount Bands" inline='true' name="federated.dsc" version='26.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="fct_discount_bands.csv" name="textscan.dsc">
+            <connection class='textscan' directory='../data/marts' filename="fct_discount_bands.csv" password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection="textscan.dsc" name="fct_discount_bands.csv" table="[fct_discount_bands#csv]" type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>order_month</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[order_month]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>order_month</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>category</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[category]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>category</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>discount_band</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[discount_band]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>discount_band</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>discount_band_rank</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[discount_band_rank]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>discount_band_rank</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_lines</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[order_lines]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>order_lines</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>orders</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[orders]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>orders</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>units</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[units]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>units</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>units_per_line</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[units_per_line]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>units_per_line</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gross_revenue</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[gross_revenue]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>gross_revenue</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>discount_given</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[discount_given]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>discount_given</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_revenue</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[net_revenue]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>net_revenue</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>contribution_margin</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[contribution_margin]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>contribution_margin</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>avg_discount_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[avg_discount_rate]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>avg_discount_rate</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_revenue_per_unit</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[net_revenue_per_unit]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>net_revenue_per_unit</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>margin_per_unit</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[margin_per_unit]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>margin_per_unit</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>contribution_margin_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[contribution_margin_rate]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>contribution_margin_rate</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>returned_lines</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[returned_lines]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>returned_lines</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>return_line_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[return_line_rate]</local-name>
+            <parent-name>[fct_discount_bands#csv]</parent-name>
+            <remote-alias>return_line_rate</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[discount_band_rank]' role='dimension' type='ordinal' />
+      <column caption="Margin per Unit" datatype='real' default-format="£#,##0.00" name='[Calculation_301]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([contribution_margin]) / SUM([units])" />
+      </column>
+      <column caption="Net Revenue per Unit" datatype='real' default-format="£#,##0.00" name='[Calculation_302]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([net_revenue]) / SUM([units])" />
+      </column>
+      <column caption="Contribution Margin Rate" datatype='real' default-format="p1" name='[Calculation_303]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([contribution_margin]) / SUM([net_revenue])" />
+      </column>
+      <column caption="Units per Line" datatype='real' default-format="n2" name='[Calculation_304]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([units]) / SUM([order_lines])" />
+      </column>
+    </datasource>
+    <datasource caption="Cohort Repeat" inline='true' name="federated.coh" version='26.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="fct_cohort_repeat.csv" name="textscan.coh">
+            <connection class='textscan' directory='../data/marts' filename="fct_cohort_repeat.csv" password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection="textscan.coh" name="fct_cohort_repeat.csv" table="[fct_cohort_repeat#csv]" type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>cohort_month</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[cohort_month]</local-name>
+            <parent-name>[fct_cohort_repeat#csv]</parent-name>
+            <remote-alias>cohort_month</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>first_order_experience</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[first_order_experience]</local-name>
+            <parent-name>[fct_cohort_repeat#csv]</parent-name>
+            <remote-alias>first_order_experience</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>activity_month</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[activity_month]</local-name>
+            <parent-name>[fct_cohort_repeat#csv]</parent-name>
+            <remote-alias>activity_month</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>period_index</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[period_index]</local-name>
+            <parent-name>[fct_cohort_repeat#csv]</parent-name>
+            <remote-alias>period_index</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cohort_customers</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cohort_customers]</local-name>
+            <parent-name>[fct_cohort_repeat#csv]</parent-name>
+            <remote-alias>cohort_customers</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>active_customers</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[active_customers]</local-name>
+            <parent-name>[fct_cohort_repeat#csv]</parent-name>
+            <remote-alias>active_customers</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>orders</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[orders]</local-name>
+            <parent-name>[fct_cohort_repeat#csv]</parent-name>
+            <remote-alias>orders</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_revenue</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[net_revenue]</local-name>
+            <parent-name>[fct_cohort_repeat#csv]</parent-name>
+            <remote-alias>net_revenue</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>contribution_margin</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[contribution_margin]</local-name>
+            <parent-name>[fct_cohort_repeat#csv]</parent-name>
+            <remote-alias>contribution_margin</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>active_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[active_rate]</local-name>
+            <parent-name>[fct_cohort_repeat#csv]</parent-name>
+            <remote-alias>active_rate</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cumulative_contribution_margin</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[cumulative_contribution_margin]</local-name>
+            <parent-name>[fct_cohort_repeat#csv]</parent-name>
+            <remote-alias>cumulative_contribution_margin</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cumulative_margin_per_customer</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[cumulative_margin_per_customer]</local-name>
+            <parent-name>[fct_cohort_repeat#csv]</parent-name>
+            <remote-alias>cumulative_margin_per_customer</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[period_index]' role='dimension' type='ordinal' />
+      <column caption="Repeat Rate" datatype='real' default-format="p1" name='[Calculation_401]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([active_customers]) / SUM([cohort_customers])" />
+      </column>
+      <column caption="Cumulative Margin per Customer" datatype='real' default-format="£#,##0.00" name='[Calculation_402]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([cumulative_contribution_margin]) / SUM([cohort_customers])" />
+      </column>
+    </datasource>
+    <datasource caption="Channel Payback" inline='true' name="federated.pay" version='26.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="fct_channel_payback.csv" name="textscan.pay">
+            <connection class='textscan' directory='../data/marts' filename="fct_channel_payback.csv" password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection="textscan.pay" name="fct_channel_payback.csv" table="[fct_channel_payback#csv]" type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>acquisition_channel</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[acquisition_channel]</local-name>
+            <parent-name>[fct_channel_payback#csv]</parent-name>
+            <remote-alias>acquisition_channel</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>signup_month</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[signup_month]</local-name>
+            <parent-name>[fct_channel_payback#csv]</parent-name>
+            <remote-alias>signup_month</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>activity_month</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[activity_month]</local-name>
+            <parent-name>[fct_channel_payback#csv]</parent-name>
+            <remote-alias>activity_month</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>period_index</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[period_index]</local-name>
+            <parent-name>[fct_channel_payback#csv]</parent-name>
+            <remote-alias>period_index</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cohort_customers</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cohort_customers]</local-name>
+            <parent-name>[fct_channel_payback#csv]</parent-name>
+            <remote-alias>cohort_customers</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>acquisition_spend</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[acquisition_spend]</local-name>
+            <parent-name>[fct_channel_payback#csv]</parent-name>
+            <remote-alias>acquisition_spend</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cac</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[cac]</local-name>
+            <parent-name>[fct_channel_payback#csv]</parent-name>
+            <remote-alias>cac</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>active_customers</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[active_customers]</local-name>
+            <parent-name>[fct_channel_payback#csv]</parent-name>
+            <remote-alias>active_customers</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_revenue</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[net_revenue]</local-name>
+            <parent-name>[fct_channel_payback#csv]</parent-name>
+            <remote-alias>net_revenue</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>contribution_margin</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[contribution_margin]</local-name>
+            <parent-name>[fct_channel_payback#csv]</parent-name>
+            <remote-alias>contribution_margin</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cumulative_contribution_margin</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[cumulative_contribution_margin]</local-name>
+            <parent-name>[fct_channel_payback#csv]</parent-name>
+            <remote-alias>cumulative_contribution_margin</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cumulative_margin_net_of_cac</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[cumulative_margin_net_of_cac]</local-name>
+            <parent-name>[fct_channel_payback#csv]</parent-name>
+            <remote-alias>cumulative_margin_net_of_cac</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>payback_ratio</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[payback_ratio]</local-name>
+            <parent-name>[fct_channel_payback#csv]</parent-name>
+            <remote-alias>payback_ratio</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[period_index]' role='dimension' type='ordinal' />
+      <column caption="CAC" datatype='real' default-format="£#,##0.00" name='[Calculation_501]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([acquisition_spend]) / SUM([cohort_customers])" />
+      </column>
+      <column caption="Margin net of CAC per Customer" datatype='real' default-format="£#,##0.00" name='[Calculation_502]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([cumulative_margin_net_of_cac]) / SUM([cohort_customers])" />
+      </column>
+      <column caption="Payback Multiple" datatype='real' default-format="n2" name='[Calculation_503]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([cumulative_contribution_margin]) / SUM([acquisition_spend])" />
+      </column>
+    </datasource>
+    <datasource caption="Returns" inline='true' name="federated.ret" version='26.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="fct_returns.csv" name="textscan.ret">
+            <connection class='textscan' directory='../data/marts' filename="fct_returns.csv" password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection="textscan.ret" name="fct_returns.csv" table="[fct_returns#csv]" type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>return_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[return_id]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>return_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_item_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_item_id]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>order_item_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_id]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>order_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>customer_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[customer_id]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>customer_id</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>product_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[product_id]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>product_id</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[order_date]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>order_date</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_month</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[order_month]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>order_month</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>return_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[return_date]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>return_date</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>days_to_return</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[days_to_return]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>days_to_return</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>category</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[category]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>category</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>subcategory</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[subcategory]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>subcategory</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>brand</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[brand]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>brand</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_channel</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_channel]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>order_channel</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fulfilment_centre</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[fulfilment_centre]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>fulfilment_centre</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>carrier</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[carrier]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>carrier</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_on_time</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_on_time]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>is_on_time</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>return_reason</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[return_reason]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>return_reason</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_restocked</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_restocked]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>is_restocked</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>disposition</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[disposition]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>disposition</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quantity_returned</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[quantity_returned]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>quantity_returned</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quantity_ordered</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[quantity_ordered]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>quantity_ordered</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>refund_amount</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[refund_amount]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>refund_amount</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>margin_lost</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[margin_lost]</local-name>
+            <parent-name>[fct_returns#csv]</parent-name>
+            <remote-alias>margin_lost</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[quantity_ordered]' role='dimension' type='ordinal' />
+      <column caption="Margin Lost" datatype='real' default-format="£#,##0" name='[Calculation_601]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([margin_lost])" />
+      </column>
+      <column caption="Write-off Share" datatype='real' default-format="p1" name='[Calculation_602]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM(IIF([is_restocked], 0, [margin_lost])) / SUM([margin_lost])" />
+      </column>
+    </datasource>
+    <datasource caption="Product" inline='true' name="federated.prd" version='26.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="dim_product.csv" name="textscan.prd">
+            <connection class='textscan' directory='../data/marts' filename="dim_product.csv" password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection="textscan.prd" name="dim_product.csv" table="[dim_product#csv]" type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>product_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[product_id]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>product_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sku</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[sku]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>sku</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>product_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[product_name]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>product_name</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>category</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[category]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>category</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>subcategory</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[subcategory]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>subcategory</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>brand</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[brand]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>brand</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>unit_cost</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[unit_cost]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>unit_cost</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>list_price</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[list_price]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>list_price</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weight_kg</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weight_kg]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>weight_kg</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>list_margin_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[list_margin_rate]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>list_margin_rate</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_lines</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[order_lines]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>order_lines</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>units_sold</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[units_sold]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>units_sold</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>units_returned</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[units_returned]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>units_returned</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gross_revenue</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[gross_revenue]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>gross_revenue</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>discount_amount</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[discount_amount]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>discount_amount</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_revenue</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[net_revenue]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>net_revenue</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>refund_amount</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[refund_amount]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>refund_amount</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cogs</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[cogs]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>cogs</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_shipping_cost</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[net_shipping_cost]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>net_shipping_cost</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>contribution_margin</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[contribution_margin]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>contribution_margin</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>avg_discount_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[avg_discount_rate]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>avg_discount_rate</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>unit_return_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[unit_return_rate]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>unit_return_rate</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>contribution_margin_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[contribution_margin_rate]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>contribution_margin_rate</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>margin_rate_vs_list</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[margin_rate_vs_list]</local-name>
+            <parent-name>[dim_product#csv]</parent-name>
+            <remote-alias>margin_rate_vs_list</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption="Realised Margin Rate" datatype='real' default-format="p1" name='[Calculation_701]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([contribution_margin]) / SUM([net_revenue])" />
+      </column>
+      <column caption="Margin Gap vs List" datatype='real' default-format="p1" name='[Calculation_702]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([contribution_margin]) / SUM([net_revenue]) - AVG([list_margin_rate])" />
+      </column>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name="Category Contribution">
+      <table>
+        <view>
+          <datasources>
+          <datasource caption="Order Lines" name="federated.oi" />
+          <datasource name="Parameters" />
+          </datasources>
+          <datasource-dependencies datasource='federated.oi'>
+          <column datatype='string' name='[category]' role='dimension' type='nominal' />
+          <column datatype='real' name='[net_revenue]' role='measure' type='quantitative' />
+          <column datatype='real' name='[contribution_margin]' role='measure' type='quantitative' />
+          <column caption="Margin Basis" datatype='real' default-format="£#,##0" name='[Calculation_108]' role='measure' type='quantitative'>
+            <calculation class='tableau' formula="IF [Parameters].[Parameter 1] = 'Contribution Margin' THEN SUM([contribution_margin]) ELSE SUM([net_revenue]) END" />
+          </column>
+          <column-instance column='[category]' derivation='None' name='[none:category:nk]' pivot='key' type='nominal' />
+          <column-instance column='[Calculation_108]' derivation='User' name='[usr:Calculation_108:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Margin Basis' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;Contribution Margin&quot;'>
+              <calculation class='tableau' formula='&quot;Contribution Margin&quot;' />
+              <members>
+                <member value='&quot;Contribution Margin&quot;' />
+                <member value='&quot;Net Revenue&quot;' />
+              </members>
+            </column>
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[federated.oi].[none:category:nk]' palette='custom' type='palette'>
+          <map to='#2e5e8f'><bucket>&quot;Apparel&quot;</bucket></map>
+          <map to='#4a8fbf'><bucket>&quot;Footwear&quot;</bucket></map>
+          <map to='#c1462c'><bucket>&quot;Electronics&quot;</bucket></map>
+          <map to='#e08e45'><bucket>&quot;Home &amp; Kitchen&quot;</bucket></map>
+          <map to='#4f9d69'><bucket>&quot;Beauty&quot;</bucket></map>
+          <map to='#7b6aa8'><bucket>&quot;Sports &amp; Outdoors&quot;</bucket></map>
+          </encoding>
+        </style-rule>
+      </style>
+        <panes>
+          <pane id='1'>
+            <view><breakdown value='auto' /></view>
+            <mark class='Bar' />
+            <encodings>
+            <color column='[federated.oi].[none:category:nk]' />
+            <text column='[federated.oi].[usr:Calculation_108:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.oi].[usr:Calculation_108:qk]</rows>
+        <cols>[federated.oi].[none:category:nk]</cols>
+      </table>
+      <simple-id uuid="{029441de-8459-5eda-9f57-01b2c9b0aa78}" />
+    </worksheet>
+    <worksheet name="Promised vs Realised Margin">
+      <table>
+        <view>
+          <datasources>
+          <datasource caption="Product" name="federated.prd" />
+          </datasources>
+          <datasource-dependencies datasource='federated.prd'>
+          <column datatype='string' name='[product_id]' role='dimension' type='nominal' />
+          <column datatype='string' name='[category]' role='dimension' type='nominal' />
+          <column datatype='real' name='[list_margin_rate]' role='measure' type='quantitative' />
+          <column datatype='real' name='[net_revenue]' role='measure' type='quantitative' />
+          <column datatype='real' name='[contribution_margin]' role='measure' type='quantitative' />
+          <column caption="Realised Margin Rate" datatype='real' default-format="p1" name='[Calculation_701]' role='measure' type='quantitative'>
+            <calculation class='tableau' formula="SUM([contribution_margin]) / SUM([net_revenue])" />
+          </column>
+          <column-instance column='[product_id]' derivation='None' name='[none:product_id:nk]' pivot='key' type='nominal' />
+          <column-instance column='[category]' derivation='None' name='[none:category:nk]' pivot='key' type='nominal' />
+          <column-instance column='[list_margin_rate]' derivation='Avg' name='[avg:list_margin_rate:qk]' pivot='key' type='quantitative' />
+          <column-instance column='[net_revenue]' derivation='Sum' name='[sum:net_revenue:qk]' pivot='key' type='quantitative' />
+          <column-instance column='[Calculation_701]' derivation='User' name='[usr:Calculation_701:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[federated.prd].[none:category:nk]' palette='custom' type='palette'>
+          <map to='#2e5e8f'><bucket>&quot;Apparel&quot;</bucket></map>
+          <map to='#4a8fbf'><bucket>&quot;Footwear&quot;</bucket></map>
+          <map to='#c1462c'><bucket>&quot;Electronics&quot;</bucket></map>
+          <map to='#e08e45'><bucket>&quot;Home &amp; Kitchen&quot;</bucket></map>
+          <map to='#4f9d69'><bucket>&quot;Beauty&quot;</bucket></map>
+          <map to='#7b6aa8'><bucket>&quot;Sports &amp; Outdoors&quot;</bucket></map>
+          </encoding>
+        </style-rule>
+      </style>
+        <panes>
+          <pane id='1'>
+            <view><breakdown value='auto' /></view>
+            <mark class='Circle' />
+            <encodings>
+            <color column='[federated.prd].[none:category:nk]' />
+            <size column='[federated.prd].[sum:net_revenue:qk]' />
+            <text column='[federated.prd].[none:product_id:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.prd].[usr:Calculation_701:qk]</rows>
+        <cols>[federated.prd].[avg:list_margin_rate:qk]</cols>
+      </table>
+      <simple-id uuid="{68889ec5-ad38-5794-9d96-c9ea2998102c}" />
+    </worksheet>
+    <worksheet name="Margin Trend by Category">
+      <table>
+        <view>
+          <datasources>
+          <datasource caption="Order Lines" name="federated.oi" />
+          </datasources>
+          <datasource-dependencies datasource='federated.oi'>
+          <column datatype='date' name='[order_month]' role='dimension' type='ordinal' />
+          <column datatype='string' name='[category]' role='dimension' type='nominal' />
+          <column datatype='real' name='[contribution_margin]' role='measure' type='quantitative' />
+          <column-instance column='[order_month]' derivation='Month' name='[tmn:order_month:qk]' pivot='key' type='quantitative' />
+          <column-instance column='[category]' derivation='None' name='[none:category:nk]' pivot='key' type='nominal' />
+          <column-instance column='[contribution_margin]' derivation='Sum' name='[sum:contribution_margin:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[federated.oi].[none:category:nk]' palette='custom' type='palette'>
+          <map to='#2e5e8f'><bucket>&quot;Apparel&quot;</bucket></map>
+          <map to='#4a8fbf'><bucket>&quot;Footwear&quot;</bucket></map>
+          <map to='#c1462c'><bucket>&quot;Electronics&quot;</bucket></map>
+          <map to='#e08e45'><bucket>&quot;Home &amp; Kitchen&quot;</bucket></map>
+          <map to='#4f9d69'><bucket>&quot;Beauty&quot;</bucket></map>
+          <map to='#7b6aa8'><bucket>&quot;Sports &amp; Outdoors&quot;</bucket></map>
+          </encoding>
+        </style-rule>
+      </style>
+        <panes>
+          <pane id='1'>
+            <view><breakdown value='auto' /></view>
+            <mark class='Area' />
+            <encodings>
+            <color column='[federated.oi].[none:category:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.oi].[sum:contribution_margin:qk]</rows>
+        <cols>[federated.oi].[tmn:order_month:qk]</cols>
+      </table>
+      <simple-id uuid="{4c37b95c-5443-5249-97d0-0844c32e7aa6}" />
+    </worksheet>
+    <worksheet name="Discount Elasticity">
+      <table>
+        <view>
+          <datasources>
+          <datasource caption="Discount Bands" name="federated.dsc" />
+          </datasources>
+          <datasource-dependencies datasource='federated.dsc'>
+          <column datatype='string' name='[category]' role='dimension' type='nominal' />
+          <column datatype='string' name='[discount_band]' role='dimension' type='nominal' />
+          <column datatype='integer' name='[discount_band_rank]' role='dimension' type='ordinal' />
+          <column datatype='integer' name='[units]' role='measure' type='quantitative' />
+          <column datatype='real' name='[net_revenue]' role='measure' type='quantitative' />
+          <column datatype='real' name='[contribution_margin]' role='measure' type='quantitative' />
+          <column caption="Margin per Unit" datatype='real' default-format="£#,##0.00" name='[Calculation_301]' role='measure' type='quantitative'>
+            <calculation class='tableau' formula="SUM([contribution_margin]) / SUM([units])" />
+          </column>
+          <column-instance column='[category]' derivation='None' name='[none:category:nk]' pivot='key' type='nominal' />
+          <column-instance column='[discount_band]' derivation='None' name='[none:discount_band:nk]' pivot='key' type='nominal' />
+          <column-instance column='[discount_band_rank]' derivation='None' name='[none:discount_band_rank:ok]' pivot='key' type='ordinal' />
+          <column-instance column='[Calculation_301]' derivation='User' name='[usr:Calculation_301:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[federated.dsc].[none:discount_band:nk]' palette='custom' type='palette'>
+          <map to='#d9d9d9'><bucket>&quot;0%&quot;</bucket></map>
+          <map to='#bcd4e6'><bucket>&quot;1-10%&quot;</bucket></map>
+          <map to='#7fa8c9'><bucket>&quot;10-20%&quot;</bucket></map>
+          <map to='#d98b6a'><bucket>&quot;20-30%&quot;</bucket></map>
+          <map to='#c1462c'><bucket>&quot;30%+&quot;</bucket></map>
+          </encoding>
+        </style-rule>
+      </style>
+        <panes>
+          <pane id='1'>
+            <view><breakdown value='auto' /></view>
+            <mark class='Bar' />
+            <encodings>
+            <color column='[federated.dsc].[none:discount_band:nk]' />
+            <text column='[federated.dsc].[usr:Calculation_301:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.dsc].[usr:Calculation_301:qk]</rows>
+        <cols>([federated.dsc].[none:category:nk] / [federated.dsc].[none:discount_band_rank:ok])</cols>
+      </table>
+      <simple-id uuid="{08d204bb-6ec0-582b-bf78-2d69f2654edf}" />
+    </worksheet>
+    <worksheet name="Units per Line by Depth">
+      <table>
+        <view>
+          <datasources>
+          <datasource caption="Discount Bands" name="federated.dsc" />
+          </datasources>
+          <datasource-dependencies datasource='federated.dsc'>
+          <column datatype='string' name='[category]' role='dimension' type='nominal' />
+          <column datatype='string' name='[discount_band]' role='dimension' type='nominal' />
+          <column datatype='integer' name='[discount_band_rank]' role='dimension' type='ordinal' />
+          <column datatype='integer' name='[units]' role='measure' type='quantitative' />
+          <column datatype='integer' name='[order_lines]' role='measure' type='quantitative' />
+          <column caption="Units per Line" datatype='real' default-format="n2" name='[Calculation_304]' role='measure' type='quantitative'>
+            <calculation class='tableau' formula="SUM([units]) / SUM([order_lines])" />
+          </column>
+          <column-instance column='[category]' derivation='None' name='[none:category:nk]' pivot='key' type='nominal' />
+          <column-instance column='[discount_band]' derivation='None' name='[none:discount_band:nk]' pivot='key' type='nominal' />
+          <column-instance column='[discount_band_rank]' derivation='None' name='[none:discount_band_rank:ok]' pivot='key' type='ordinal' />
+          <column-instance column='[Calculation_304]' derivation='User' name='[usr:Calculation_304:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[federated.dsc].[none:category:nk]' palette='custom' type='palette'>
+          <map to='#2e5e8f'><bucket>&quot;Apparel&quot;</bucket></map>
+          <map to='#4a8fbf'><bucket>&quot;Footwear&quot;</bucket></map>
+          <map to='#c1462c'><bucket>&quot;Electronics&quot;</bucket></map>
+          <map to='#e08e45'><bucket>&quot;Home &amp; Kitchen&quot;</bucket></map>
+          <map to='#4f9d69'><bucket>&quot;Beauty&quot;</bucket></map>
+          <map to='#7b6aa8'><bucket>&quot;Sports &amp; Outdoors&quot;</bucket></map>
+          </encoding>
+        </style-rule>
+      </style>
+        <panes>
+          <pane id='1'>
+            <view><breakdown value='auto' /></view>
+            <mark class='Line' />
+            <encodings>
+            <color column='[federated.dsc].[none:category:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.dsc].[usr:Calculation_304:qk]</rows>
+        <cols>[federated.dsc].[none:discount_band_rank:ok]</cols>
+      </table>
+      <simple-id uuid="{bbab906c-cf81-5b40-85ea-ac95cdd0ed50}" />
+    </worksheet>
+    <worksheet name="On-Time Rate by Lane">
+      <table>
+        <view>
+          <datasources>
+          <datasource caption="Fulfilment" name="federated.ful" />
+          </datasources>
+          <datasource-dependencies datasource='federated.ful'>
+          <column datatype='string' name='[fulfilment_centre]' role='dimension' type='nominal' />
+          <column datatype='string' name='[carrier]' role='dimension' type='nominal' />
+          <column datatype='integer' name='[orders]' role='measure' type='quantitative' />
+          <column datatype='integer' name='[on_time_orders]' role='measure' type='quantitative' />
+          <column caption="On-Time Rate" datatype='real' default-format="p1" name='[Calculation_201]' role='measure' type='quantitative'>
+            <calculation class='tableau' formula="SUM([on_time_orders]) / SUM([orders])" />
+          </column>
+          <column-instance column='[fulfilment_centre]' derivation='None' name='[none:fulfilment_centre:nk]' pivot='key' type='nominal' />
+          <column-instance column='[carrier]' derivation='None' name='[none:carrier:nk]' pivot='key' type='nominal' />
+          <column-instance column='[Calculation_201]' derivation='User' name='[usr:Calculation_201:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+      <style />
+        <panes>
+          <pane id='1'>
+            <view><breakdown value='auto' /></view>
+            <mark class='Square' />
+            <encodings>
+            <color column='[federated.ful].[usr:Calculation_201:qk]' />
+            <text column='[federated.ful].[usr:Calculation_201:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.ful].[none:fulfilment_centre:nk]</rows>
+        <cols>[federated.ful].[none:carrier:nk]</cols>
+      </table>
+      <simple-id uuid="{5bf6fb01-c12d-5398-8ad2-477020a295fa}" />
+    </worksheet>
+    <worksheet name="Revenue on Late Parcels">
+      <table>
+        <view>
+          <datasources>
+          <datasource caption="Fulfilment" name="federated.ful" />
+          </datasources>
+          <datasource-dependencies datasource='federated.ful'>
+          <column datatype='date' name='[order_month]' role='dimension' type='ordinal' />
+          <column datatype='string' name='[carrier]' role='dimension' type='nominal' />
+          <column datatype='real' name='[late_net_revenue]' role='measure' type='quantitative' />
+          <column-instance column='[order_month]' derivation='Month' name='[tmn:order_month:qk]' pivot='key' type='quantitative' />
+          <column-instance column='[carrier]' derivation='None' name='[none:carrier:nk]' pivot='key' type='nominal' />
+          <column-instance column='[late_net_revenue]' derivation='Sum' name='[sum:late_net_revenue:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[federated.ful].[none:carrier:nk]' palette='custom' type='palette'>
+          <map to='#2e5e8f'><bucket>&quot;Swiftline&quot;</bucket></map>
+          <map to='#4a8fbf'><bucket>&quot;Metro Post&quot;</bucket></map>
+          <map to='#c1462c'><bucket>&quot;Regional Freight&quot;</bucket></map>
+          </encoding>
+        </style-rule>
+      </style>
+        <panes>
+          <pane id='1'>
+            <view><breakdown value='auto' /></view>
+            <mark class='Bar' />
+            <encodings>
+            <color column='[federated.ful].[none:carrier:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.ful].[sum:late_net_revenue:qk]</rows>
+        <cols>[federated.ful].[tmn:order_month:qk]</cols>
+      </table>
+      <simple-id uuid="{e83263ef-83b7-5889-9f5f-5ba2bb5c6045}" />
+    </worksheet>
+    <worksheet name="First-Order Experience">
+      <table>
+        <view>
+          <datasources>
+          <datasource caption="Cohort Repeat" name="federated.coh" />
+          </datasources>
+          <datasource-dependencies datasource='federated.coh'>
+          <column datatype='integer' name='[period_index]' role='dimension' type='ordinal' />
+          <column datatype='string' name='[first_order_experience]' role='dimension' type='nominal' />
+          <column datatype='integer' name='[active_customers]' role='measure' type='quantitative' />
+          <column datatype='integer' name='[cohort_customers]' role='measure' type='quantitative' />
+          <column caption="Repeat Rate" datatype='real' default-format="p1" name='[Calculation_401]' role='measure' type='quantitative'>
+            <calculation class='tableau' formula="SUM([active_customers]) / SUM([cohort_customers])" />
+          </column>
+          <column-instance column='[period_index]' derivation='None' name='[none:period_index:ok]' pivot='key' type='ordinal' />
+          <column-instance column='[first_order_experience]' derivation='None' name='[none:first_order_experience:nk]' pivot='key' type='nominal' />
+          <column-instance column='[Calculation_401]' derivation='User' name='[usr:Calculation_401:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+        <filter class='quantitative' column='[federated.coh].[none:period_index:ok]' included-values='in-range'>
+          <min>1</min>
+          <max>12</max>
+        </filter>
+        <slices>
+          <column>[federated.coh].[none:period_index:ok]</column>
+        </slices>
+          <aggregation value='true' />
+        </view>
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[federated.coh].[none:first_order_experience:nk]' palette='custom' type='palette'>
+          <map to='#2e7d32'><bucket>&quot;Clean&quot;</bucket></map>
+          <map to='#f9a825'><bucket>&quot;Returned&quot;</bucket></map>
+          <map to='#ef6c00'><bucket>&quot;Delivered late&quot;</bucket></map>
+          <map to='#c62828'><bucket>&quot;Late and returned&quot;</bucket></map>
+          </encoding>
+        </style-rule>
+      </style>
+        <panes>
+          <pane id='1'>
+            <view><breakdown value='auto' /></view>
+            <mark class='Line' />
+            <encodings>
+            <color column='[federated.coh].[none:first_order_experience:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.coh].[usr:Calculation_401:qk]</rows>
+        <cols>[federated.coh].[none:period_index:ok]</cols>
+      </table>
+      <simple-id uuid="{30c354cd-be85-5a31-99d6-4481b62cf2d7}" />
+    </worksheet>
+    <worksheet name="CAC Payback by Channel">
+      <table>
+        <view>
+          <datasources>
+          <datasource caption="Channel Payback" name="federated.pay" />
+          </datasources>
+          <datasource-dependencies datasource='federated.pay'>
+          <column datatype='integer' name='[period_index]' role='dimension' type='ordinal' />
+          <column datatype='string' name='[acquisition_channel]' role='dimension' type='nominal' />
+          <column datatype='integer' name='[cohort_customers]' role='measure' type='quantitative' />
+          <column datatype='real' name='[acquisition_spend]' role='measure' type='quantitative' />
+          <column datatype='real' name='[cumulative_margin_net_of_cac]' role='measure' type='quantitative' />
+          <column caption="Margin net of CAC per Customer" datatype='real' default-format="£#,##0.00" name='[Calculation_502]' role='measure' type='quantitative'>
+            <calculation class='tableau' formula="SUM([cumulative_margin_net_of_cac]) / SUM([cohort_customers])" />
+          </column>
+          <column-instance column='[period_index]' derivation='None' name='[none:period_index:ok]' pivot='key' type='ordinal' />
+          <column-instance column='[acquisition_channel]' derivation='None' name='[none:acquisition_channel:nk]' pivot='key' type='nominal' />
+          <column-instance column='[Calculation_502]' derivation='User' name='[usr:Calculation_502:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+        <filter class='quantitative' column='[federated.pay].[none:period_index:ok]' included-values='in-range'>
+          <min>0</min>
+          <max>18</max>
+        </filter>
+        <slices>
+          <column>[federated.pay].[none:period_index:ok]</column>
+        </slices>
+          <aggregation value='true' />
+        </view>
+      <style />
+        <panes>
+          <pane id='1'>
+            <view><breakdown value='auto' /></view>
+            <mark class='Line' />
+            <encodings>
+            <color column='[federated.pay].[none:acquisition_channel:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.pay].[usr:Calculation_502:qk]</rows>
+        <cols>[federated.pay].[none:period_index:ok]</cols>
+      </table>
+      <simple-id uuid="{bfc21c50-8b9f-5b68-9253-147902b71c13}" />
+    </worksheet>
+    <worksheet name="Return Reasons by Margin Lost">
+      <table>
+        <view>
+          <datasources>
+          <datasource caption="Returns" name="federated.ret" />
+          </datasources>
+          <datasource-dependencies datasource='federated.ret'>
+          <column datatype='string' name='[return_reason]' role='dimension' type='nominal' />
+          <column datatype='string' name='[disposition]' role='dimension' type='nominal' />
+          <column datatype='string' name='[category]' role='dimension' type='nominal' />
+          <column datatype='real' name='[margin_lost]' role='measure' type='quantitative' />
+          <column caption="Margin Lost" datatype='real' default-format="£#,##0" name='[Calculation_601]' role='measure' type='quantitative'>
+            <calculation class='tableau' formula="SUM([margin_lost])" />
+          </column>
+          <column-instance column='[return_reason]' derivation='None' name='[none:return_reason:nk]' pivot='key' type='nominal' />
+          <column-instance column='[disposition]' derivation='None' name='[none:disposition:nk]' pivot='key' type='nominal' />
+          <column-instance column='[category]' derivation='None' name='[none:category:nk]' pivot='key' type='nominal' />
+          <column-instance column='[Calculation_601]' derivation='User' name='[usr:Calculation_601:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[federated.ret].[none:disposition:nk]' palette='custom' type='palette'>
+          <map to='#4f9d69'><bucket>&quot;Recovered&quot;</bucket></map>
+          <map to='#c1462c'><bucket>&quot;Written off&quot;</bucket></map>
+          </encoding>
+        </style-rule>
+      </style>
+        <panes>
+          <pane id='1'>
+            <view><breakdown value='auto' /></view>
+            <mark class='Bar' />
+            <encodings>
+            <color column='[federated.ret].[none:disposition:nk]' />
+            <text column='[federated.ret].[usr:Calculation_601:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.ret].[none:return_reason:nk]</rows>
+        <cols>[federated.ret].[usr:Calculation_601:qk]</cols>
+      </table>
+      <simple-id uuid="{d6b3a351-3c71-5a3e-b34f-82e261ed701e}" />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name="1 · Margin Reality">
+      <style />
+      <size maxheight='950' maxwidth='1500' minheight='950' minwidth='1500' />
+      <zones>
+        <zone h='100000' id='1' type-v2='layout-basic' w='100000' x='0' y='0'>
+        <zone h='7000' id='2' type-v2='text' w='78000' x='0' y='0'>
+          <formatted-text>
+            <run bold='true' fontsize='16'>Where the Margin Actually Is</run>
+            <run>&#13;&#10;</run>
+            <run fontcolor='#5a5a5a' fontsize='10'>Contribution margin after discount, returns and freight - not gross revenue. Use the Margin Basis parameter to switch the first chart between the two.</run>
+          </formatted-text>
+        </zone>
+        <zone h='46000' id='3' name="Category Contribution" w='50000' x='0' y='7000' />
+        <zone h='46000' id='4' name="Promised vs Realised Margin" w='50000' x='50000' y='7000' />
+        <zone h='47000' id='5' name="Margin Trend by Category" w='100000' x='0' y='53000' />
+        <zone h='7000' id='6' param="[Parameters].[Parameter 1]" type-v2='paramctrl' w='22000' x='78000' y='0' />
+        </zone>
+      </zones>
+      <simple-id uuid="{2d7f3276-7628-575f-bc16-c69f764385af}" />
+    </dashboard>
+    <dashboard name="2 · Pricing &amp; Discounting">
+      <style />
+      <size maxheight='950' maxwidth='1500' minheight='950' minwidth='1500' />
+      <zones>
+        <zone h='100000' id='1' type-v2='layout-basic' w='100000' x='0' y='0'>
+        <zone h='7000' id='2' type-v2='text' w='100000' x='0' y='0'>
+          <formatted-text>
+            <run bold='true' fontsize='16'>What Discount Depth Buys</run>
+            <run>&#13;&#10;</run>
+            <run fontcolor='#5a5a5a' fontsize='10'>Margin per unit and units per line at each discount band, held within category so a mix shift cannot masquerade as elasticity.</run>
+          </formatted-text>
+        </zone>
+        <zone h='93000' id='3' name="Discount Elasticity" w='58000' x='0' y='7000' />
+        <zone h='93000' id='4' name="Units per Line by Depth" w='42000' x='58000' y='7000' />
+        </zone>
+      </zones>
+      <simple-id uuid="{c3f8e94e-e071-5666-9e97-19efd504782e}" />
+    </dashboard>
+    <dashboard name="3 · Fulfilment &amp; Its Cost">
+      <style />
+      <size maxheight='950' maxwidth='1500' minheight='950' minwidth='1500' />
+      <zones>
+        <zone h='100000' id='1' type-v2='layout-basic' w='100000' x='0' y='0'>
+        <zone h='7000' id='2' type-v2='text' w='100000' x='0' y='0'>
+          <formatted-text>
+            <run bold='true' fontsize='16'>Late Parcels and What They Cost</run>
+            <run>&#13;&#10;</run>
+            <run fontcolor='#5a5a5a' fontsize='10'>On-time rate by fulfilment centre and carrier, the revenue riding on the parcels that missed, and the repeat rate of customers whose first order was one of them.</run>
+          </formatted-text>
+        </zone>
+        <zone h='44000' id='3' name="On-Time Rate by Lane" w='42000' x='0' y='7000' />
+        <zone h='44000' id='4' name="Revenue on Late Parcels" w='58000' x='42000' y='7000' />
+        <zone h='49000' id='5' name="First-Order Experience" w='100000' x='0' y='51000' />
+        </zone>
+      </zones>
+      <simple-id uuid="{1146a60d-76b2-5a3b-b0f4-4b8004826809}" />
+    </dashboard>
+    <dashboard name="4 · Acquisition &amp; Returns">
+      <style />
+      <size maxheight='950' maxwidth='1500' minheight='950' minwidth='1500' />
+      <zones>
+        <zone h='100000' id='1' type-v2='layout-basic' w='100000' x='0' y='0'>
+        <zone h='7000' id='2' type-v2='text' w='100000' x='0' y='0'>
+          <formatted-text>
+            <run bold='true' fontsize='16'>What Each Channel Costs, and What Comes Back</run>
+            <run>&#13;&#10;</run>
+            <run fontcolor='#5a5a5a' fontsize='10'>Cumulative contribution margin net of acquisition cost per customer, and the return reasons ranked by margin destroyed rather than by unit count.</run>
+          </formatted-text>
+        </zone>
+        <zone h='93000' id='3' name="CAC Payback by Channel" w='58000' x='0' y='7000' />
+        <zone h='93000' id='4' name="Return Reasons by Margin Lost" w='42000' x='58000' y='7000' />
+        </zone>
+      </zones>
+      <simple-id uuid="{e01dcc04-b182-567f-a60f-fa1a7053dfbf}" />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' name="Category Contribution">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param="[Parameters].[Parameter 1]" type='parameter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint><zoom type='entire-view' /></viewpoint>
+      <simple-id uuid="{c549f425-0c5b-5c10-b58c-9fe49dc83329}" />
+    </window>
+    <window class='worksheet' name="Promised vs Realised Margin">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint><zoom type='entire-view' /></viewpoint>
+      <simple-id uuid="{46f692aa-d641-5e78-bfa7-ac6e1815da1f}" />
+    </window>
+    <window class='worksheet' name="Margin Trend by Category">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint><zoom type='entire-view' /></viewpoint>
+      <simple-id uuid="{847ca5b0-2e5e-5166-bc5e-a53b330e03e5}" />
+    </window>
+    <window class='worksheet' name="Discount Elasticity">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint><zoom type='entire-view' /></viewpoint>
+      <simple-id uuid="{e5eb08d5-e09f-5671-a167-5f8083240a18}" />
+    </window>
+    <window class='worksheet' name="Units per Line by Depth">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint><zoom type='entire-view' /></viewpoint>
+      <simple-id uuid="{4b04c581-06db-5320-b2e1-ec076bbec1c0}" />
+    </window>
+    <window class='worksheet' name="On-Time Rate by Lane">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint><zoom type='entire-view' /></viewpoint>
+      <simple-id uuid="{84db56d6-9627-5971-ac3b-e8b2b0845ffb}" />
+    </window>
+    <window class='worksheet' name="Revenue on Late Parcels">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint><zoom type='entire-view' /></viewpoint>
+      <simple-id uuid="{29c9699c-0bb2-534b-afe8-54ebc1a63c88}" />
+    </window>
+    <window class='worksheet' name="First-Order Experience">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint><zoom type='entire-view' /></viewpoint>
+      <simple-id uuid="{9e136ae0-ba33-558a-821b-8c047ef38664}" />
+    </window>
+    <window class='worksheet' name="CAC Payback by Channel">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint><zoom type='entire-view' /></viewpoint>
+      <simple-id uuid="{2783499d-233d-5f3e-a717-e10d81d8ceff}" />
+    </window>
+    <window class='worksheet' name="Return Reasons by Margin Lost">
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint><zoom type='entire-view' /></viewpoint>
+      <simple-id uuid="{7d650b12-b902-589e-bd8f-1aa1ea89b038}" />
+    </window>
+    <window class='dashboard' name="1 · Margin Reality">
+      <viewpoints>
+        <viewpoint name="Category Contribution"><zoom type='entire-view' /></viewpoint>
+        <viewpoint name="Promised vs Realised Margin"><zoom type='entire-view' /></viewpoint>
+        <viewpoint name="Margin Trend by Category"><zoom type='entire-view' /></viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid="{6f438f56-2515-5490-a7f4-bb1645ec41ea}" />
+    </window>
+    <window class='dashboard' name="2 · Pricing &amp; Discounting">
+      <viewpoints>
+        <viewpoint name="Discount Elasticity"><zoom type='entire-view' /></viewpoint>
+        <viewpoint name="Units per Line by Depth"><zoom type='entire-view' /></viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid="{18efb0d9-5809-5ec9-853b-ec33b0a92858}" />
+    </window>
+    <window class='dashboard' name="3 · Fulfilment &amp; Its Cost">
+      <viewpoints>
+        <viewpoint name="On-Time Rate by Lane"><zoom type='entire-view' /></viewpoint>
+        <viewpoint name="Revenue on Late Parcels"><zoom type='entire-view' /></viewpoint>
+        <viewpoint name="First-Order Experience"><zoom type='entire-view' /></viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid="{89d4ba66-e8dc-5f9e-9a6b-7db297b30172}" />
+    </window>
+    <window class='dashboard' name="4 · Acquisition &amp; Returns">
+      <viewpoints>
+        <viewpoint name="CAC Payback by Channel"><zoom type='entire-view' /></viewpoint>
+        <viewpoint name="Return Reasons by Margin Lost"><zoom type='entire-view' /></viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid="{8655cbd5-9988-50e2-b024-b6b7d3800fe2}" />
+    </window>
+  </windows>
+  <explain-data enabled-for-viewer='true' extreme-values-enabled-for-all='true'>
+    <explanation-types />
+  </explain-data>
+</workbook>

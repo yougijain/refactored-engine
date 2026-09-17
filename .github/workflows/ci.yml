@@ -1,0 +1,32 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Rebuild the warehouse from the committed extracts
+        run: python src/build_marts.py
+
+      - name: Regenerate the Tableau workbook from the mart schemas
+        run: python tools/generate_workbook.py
+
+      - name: Run contract, reproducibility and workbook tests
+        run: pytest -q
+
+      - name: Fail if the build changed anything that is committed
+        run: git diff --exit-code -- data tableau
