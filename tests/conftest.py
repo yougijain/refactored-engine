@@ -6,7 +6,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-import duckdb
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,12 +14,17 @@ MARTS_DIR = ROOT / "data" / "marts"
 
 
 @pytest.fixture(scope="session")
-def warehouse() -> duckdb.DuckDBPyConnection:
+def warehouse():
     """Rebuild from the committed raw extracts, then hand tests a read-only connection.
 
     Building rather than reusing a stale file means the suite is testing the SQL in the
     repo, not whatever happened to be on disk.
+
+    duckdb is imported here rather than at module level so that tests which never touch
+    the warehouse - the workbook and schema tests - still run where duckdb cannot load.
     """
+    import duckdb
+
     subprocess.run(
         [sys.executable, str(ROOT / "src" / "build_marts.py")],
         check=True, cwd=ROOT, capture_output=True,
