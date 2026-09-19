@@ -1306,24 +1306,24 @@
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>lifetime_billings</remote-name>
-            <remote-type>129</remote-type>
+            <remote-type>5</remote-type>
             <local-name>[lifetime_billings]</local-name>
             <parent-name>[dim_customer#csv]</parent-name>
             <remote-alias>lifetime_billings</remote-alias>
             <ordinal>20</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>failed_billings</remote-name>
-            <remote-type>129</remote-type>
+            <remote-type>5</remote-type>
             <local-name>[failed_billings]</local-name>
             <parent-name>[dim_customer#csv]</parent-name>
             <remote-alias>failed_billings</remote-alias>
             <ordinal>21</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
           </metadata-record>
           <metadata-record class='column'>

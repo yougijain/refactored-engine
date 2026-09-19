@@ -16,6 +16,7 @@ TYPE_MAP = {
     "DATE": ("date", 133, "Year", "dimension", "ordinal"),
     "VARCHAR": ("string", 129, "Count", "dimension", "nominal"),
     "DOUBLE": ("real", 5, "Sum", "measure", "quantitative"),
+    "DECIMAL": ("real", 5, "Sum", "measure", "quantitative"),
     "INTEGER": ("integer", 20, "Sum", "measure", "quantitative"),
     "BIGINT": ("integer", 20, "Sum", "measure", "quantitative"),
     "HUGEINT": ("integer", 20, "Sum", "measure", "quantitative"),
@@ -598,7 +599,7 @@ def main() -> None:
     ])
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(document, encoding="utf-8")
+    OUT.write_text(document, encoding="utf-8", newline="\n")
     print(f"wrote {OUT} ({len(document):,} chars)")
 
 

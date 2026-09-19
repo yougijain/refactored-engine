@@ -6,7 +6,7 @@ with revenue as (
         min(cohort_month)                                   as cohort_month,
         max(month) filter (where mrr > 0)                   as last_active_month,
         count(*) filter (where mrr > 0)                     as active_months,
-        sum(mrr)                                            as lifetime_recognised_mrr,
+        sum(mrr::decimal(14, 2))                            as lifetime_recognised_mrr,
         max(mrr)                                            as peak_mrr,
         arg_min(mrr, month) filter (where mrr > 0)          as initial_mrr,
         arg_max(mrr, month) filter (where mrr > 0)          as latest_mrr,
@@ -39,8 +39,8 @@ billings as (
 engagement as (
     select
         customer_id,
-        avg(seat_utilization)           as avg_seat_utilization,
-        avg(csat_score)                 as avg_csat,
+        avg(seat_utilization::decimal(8, 4)) as avg_seat_utilization,
+        avg(csat_score::decimal(6, 2))       as avg_csat,
         sum(support_tickets)            as total_support_tickets,
         arg_max(health_score, month)    as latest_health_score,
         arg_max(risk_tier, month)       as latest_risk_tier

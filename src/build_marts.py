@@ -82,7 +82,7 @@ def export_marts(con: duckdb.DuckDBPyConnection) -> None:
     MARTS_DIR.mkdir(parents=True, exist_ok=True)
     for table in PUBLISHED_MARTS:
         target = (MARTS_DIR / f"{table}.csv").as_posix()
-        con.execute(f"copy (select * from {table}) to '{target}' (header, delimiter ',')")
+        con.execute(f"copy (select * from {table} order by all) to '{target}' (header, delimiter ',')")
         rows = con.execute(f"select count(*) from {table}").fetchone()[0]
         print(f"  {table + '.csv':<30} {rows:>7,} rows")
 
